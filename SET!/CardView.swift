@@ -8,25 +8,37 @@
 import SwiftUI
 
 struct CardView: View {
-    @State private var isSelected = false
+//    @State private var isSelected = false
     @State private var isMatched: Bool? = true
 
+    let card: SetGame.Card
+    let number: Int
+    let color: Color
+    let shading: SymbolShading
+    let shape: AnyShape
+    
+    init(_ card: SetGame.Card, _ number: Int, _ shading: SymbolShading, _ color: Color, _ shape: AnyShape) {
+        self.card = card
+        self.number = number
+        self.color = color
+        self.shading = shading
+        self.shape = shape
+    }
+    
     var body: some View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: 12).fill(.white)
-            let symbol = SymbolView(number: 3, shading: SymbolShading.solid, color: .blue, shape: Ellipse())
+            let symbol = SymbolView(number: number, shading: shading, color: color, shape: shape)
 
             Group {
-                base.strokeBorder(lineWidth: isSelected ? 4 : 2)
+                base.strokeBorder(lineWidth: card.isSelected ? 4 : 2)
                 symbol
                 
-                if isSelected, let isMatched {
+                if card.isSelected, let isMatched {
                     matchedView(isMatched)
                 }
             }
-            .onTapGesture {
-                isSelected.toggle()
-            }
+            
         }
     }
     
@@ -57,8 +69,8 @@ struct SymbolView<S: Shape>: View {
             VStack(spacing:10) {
                 ForEach (0..<number, id:\.self) { _ in
                     shape
-                        .fill(color)
-                        .stroke(color, lineWidth: 0)
+                        .stroke(color, lineWidth: shading == .open ? 2 : 0)
+                        .fill(shading == .open ? .clear : color)
                         .opacity(shading == SymbolShading.semiTransparent ? 0.3 : 1)
                         .aspectRatio(aspectRatio, contentMode: .fit)
                         .frame(width: width * widthPortion)
@@ -68,3 +80,6 @@ struct SymbolView<S: Shape>: View {
         }
     }
 }
+
+
+

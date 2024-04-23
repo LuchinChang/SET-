@@ -9,7 +9,20 @@ import SwiftUI
 
 struct Test: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        
+        
+        
+        VStack(alignment:.leading){
+            Text("Hello world")
+            Text("WWDC 2022")
+        }
+        .environment(\.layoutDirection, .rightToLeft)
+        
+        
+        
+        
+        
     }
 }
 
