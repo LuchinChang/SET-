@@ -11,6 +11,7 @@ class ShapeSetGame: ObservableObject {
     private var theme = createTheme()
     @Published private var game = createSetGame()
     
+    var cardsAllDealt: Bool { game.cardsAllDealt }
     var isFinished: Bool { game.isFinished }
     var cards: Array<SetGame.Card> { game.cards.filter {$0.status == .onTable} }
    

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A622BD5F08500CF3AC3 /* SET_App.swift */; };
-		5B133A652BD5F08500CF3AC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A642BD5F08500CF3AC3 /* ContentView.swift */; };
+		5B133A652BD5F08500CF3AC3 /* ShapeSetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */; };
 		5B133A672BD5F08600CF3AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B133A662BD5F08600CF3AC3 /* Assets.xcassets */; };
 		5B133A6A2BD5F08600CF3AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B133A692BD5F08600CF3AC3 /* Preview Assets.xcassets */; };
 		5B133A732BD60E8400CF3AC3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A722BD60E8400CF3AC3 /* CardView.swift */; };
 		5B133A752BD62D1000CF3AC3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A742BD62D1000CF3AC3 /* Test.swift */; };
-		5B133A792BD74D8D00CF3AC3 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A782BD74D8D00CF3AC3 /* AspectVGrid.swift */; };
+		5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */; };
 		5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */; };
 		5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */; };
 		5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7E2BD785A900CF3AC3 /* theme.swift */; };
@@ -22,12 +22,12 @@
 /* Begin PBXFileReference section */
 		5B133A5F2BD5F08500CF3AC3 /* SET!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SET!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B133A622BD5F08500CF3AC3 /* SET_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SET_App.swift; sourceTree = "<group>"; };
-		5B133A642BD5F08500CF3AC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGameView.swift; sourceTree = "<group>"; };
 		5B133A662BD5F08600CF3AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B133A692BD5F08600CF3AC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B133A722BD60E8400CF3AC3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B133A742BD62D1000CF3AC3 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		5B133A782BD74D8D00CF3AC3 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGridWithScrollOption.swift; sourceTree = "<group>"; };
 		5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
 		5B133A7E2BD785A900CF3AC3 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
@@ -63,9 +63,9 @@
 		5B133A612BD5F08500CF3AC3 /* SET! */ = {
 			isa = PBXGroup;
 			children = (
-				5B133A782BD74D8D00CF3AC3 /* AspectVGrid.swift */,
+				5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */,
 				5B133A622BD5F08500CF3AC3 /* SET_App.swift */,
-				5B133A642BD5F08500CF3AC3 /* ContentView.swift */,
+				5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */,
 				5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */,
 				5B133A722BD60E8400CF3AC3 /* CardView.swift */,
 				5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */,
@@ -155,11 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B133A652BD5F08500CF3AC3 /* ContentView.swift in Sources */,
+				5B133A652BD5F08500CF3AC3 /* ShapeSetGameView.swift in Sources */,
 				5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */,
 				5B133A752BD62D1000CF3AC3 /* Test.swift in Sources */,
 				5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */,
-				5B133A792BD74D8D00CF3AC3 /* AspectVGrid.swift in Sources */,
+				5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */,
 				5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */,
 				5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */,
 				5B133A732BD60E8400CF3AC3 /* CardView.swift in Sources */,

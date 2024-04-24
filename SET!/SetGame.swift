@@ -9,8 +9,10 @@ import Foundation
 
 struct SetGame {
     private(set) var cards: Array<Card>
-    private(set) var isFinished = false
     private(set) var lastDealtCardIndex = 0
+    var isFinished: Bool {
+        cards.indices.filter({ cards[$0].status == .matched }).count == 81
+    }
     var cardsAllDealt: Bool {
         lastDealtCardIndex > 80
     }
@@ -83,7 +85,7 @@ struct SetGame {
             return nil
         }
         
-//        return false
+//        return true
         
         var matched = true
         for indexOfFeatures in 0..<4 {

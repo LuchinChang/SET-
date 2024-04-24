@@ -7,28 +7,44 @@
 
 import SwiftUI
 
-struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
+struct AspectVGridWithScrollOption<Item: Identifiable, ItemView: View>: View {
     let items: [Item]
     var aspectRatio: CGFloat = 1
     let content: (Item) -> ItemView
+    let minimumSizeForVGrid: CGFloat
     
-    init(_ items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
+    init(_ items: [Item], aspectRatio: CGFloat, minimumSizeForVGrid: CGFloat = 70, @ViewBuilder content: @escaping (Item) -> ItemView) {
         self.items = items
         self.aspectRatio = aspectRatio
         self.content = content
+        self.minimumSizeForVGrid = minimumSizeForVGrid
     }
     
     var body: some View {
         GeometryReader { geometry in
+            
             let gridItemSize = gridItemWidthThatFits(
                 count: items.count,
                 size: geometry.size,
                 atAspectRatio: aspectRatio
             )
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: gridItemSize), spacing: 0)], spacing: 0) {
-                ForEach(items) { item in
-                    content(item)
-                        .aspectRatio(aspectRatio, contentMode: .fit)
+            
+            if gridItemSize < minimumSizeForVGrid {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: minimumSizeForVGrid), spacing: 0)], spacing: 0) {
+                        ForEach(items) { item in
+                            content(item)
+                                .aspectRatio(aspectRatio, contentMode: .fit)
+                        }
+                    }
+                }
+            }
+            else {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: gridItemSize), spacing: 0)], spacing: 0) {
+                    ForEach(items) { item in
+                        content(item)
+                            .aspectRatio(aspectRatio, contentMode: .fit)
+                    }
                 }
             }
         }
