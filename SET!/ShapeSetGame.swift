@@ -19,26 +19,33 @@ class ShapeSetGame: ObservableObject {
     func choose(_ card: SetGame.Card) {
         game.chooseCard(card)
     }
+   
+    func deal() {
+        game.deal()
+    }
     
+    func newGame() {
+        game = ShapeSetGame.createSetGame()
+    }
     
     private static func createSetGame() -> SetGame {
         SetGame()
     }
     
     func getSymbolQuantity (_ card: SetGame.Card) -> Int {
-        theme.feat1Factory(card.featureIndex.0)
+        theme.feat1Factory(card.features[0])
     }
     
     func getSymbolShadingType(_ card: SetGame.Card) -> SymbolShading {
-        theme.feat2Factory(card.featureIndex.1)
+        theme.feat2Factory(card.features[1])
     }
     
     func getSymbolColor (_ card: SetGame.Card) -> Color {
-        theme.feat3Factory(card.featureIndex.2)
+        theme.feat3Factory(card.features[2])
     }
     
     func getSymbolShape (_ card: SetGame.Card) -> AnyShape {
-        theme.feat4Factory(card.featureIndex.3)
+        theme.feat4Factory(card.features[3])
     }
     
     // Number, Shading, Color, Shape

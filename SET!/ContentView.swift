@@ -24,28 +24,20 @@ struct ContentView: View {
     
     var playingView: some View {
         VStack() {
-            title
+            banner
+                .padding()
 //                .background(.red)
             Spacer()
             ScrollView {
                 cards
             }
-            .background(.brown)
+//            .background(.brown)
             Spacer()
             dealButton
 //                .background(.blue)
         }
         .padding()
     }
-//    var cards: some View {
-//        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 0)], spacing: 0) {
-//            ForEach(0..<12) { index in
-//                CardView()
-//                    .aspectRatio(2/3, contentMode: .fit)
-//                    .padding(3)
-//            }
-//        }
-//    }
     
     var cards: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 0)], spacing: 0) {
@@ -67,8 +59,7 @@ struct ContentView: View {
     
     var dealButton: some View {
         Button("Deal") {
-            // FIX ME
-            print("hi")
+            shapeSetGame.deal()
         }
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
     }
@@ -78,12 +69,32 @@ struct ContentView: View {
             title
         }
     }
+       
+    var banner: some View {
+        HStack {
+//            Spacer()
+            title
+//            Spacer()
+            newGameButtone
+        }
+    }
+    
+    var newGameButtone: some View {
+        Button("⨁") {
+            shapeSetGame.newGame()
+        }
+        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//        .frame(alignment: .trailing)
         
-    var title: some View =
+    }
+    
+    var title: some View {
         Text("SET!")
             .font(.largeTitle)
+//            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
             .padding(.top, 2)
-   
+            
+    }
     
     
     // MARK: - Debug Variables

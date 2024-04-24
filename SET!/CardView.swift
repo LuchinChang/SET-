@@ -34,7 +34,7 @@ struct CardView: View {
                 base.strokeBorder(lineWidth: card.isSelected ? 4 : 2)
                 symbol
                 
-                if card.isSelected, let isMatched {
+                if card.isSelected, let isMatched = card.isMatched {
                     matchedView(isMatched)
                 }
             }
