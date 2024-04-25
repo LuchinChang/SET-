@@ -15,11 +15,8 @@ struct ShapeSetGameView: View {
     
     var body: some View {
         Group {
-            if shapeSetGame.isFinished {
-                finishedView
-            } else {
-                playingView
-            }
+            if shapeSetGame.isFinished { finishedView }
+            else { playingView }
         }
     }
     
@@ -27,10 +24,16 @@ struct ShapeSetGameView: View {
         VStack(spacing: 0) {
             banner
                 .padding()
-            AspectVGridWithScrollOption(shapeSetGame.cards, aspectRatio: cardAspectRatio, content: buildCardView(_:))
-            if !shapeSetGame.cardsAllDealt {
+            AspectVGridWithScrollOption(shapeSetGame.cardsOnTable, aspectRatio: cardAspectRatio, content: buildCardView(_:))
+            Spacer()
+            HStack {
                 Spacer()
-                dealButton
+                hintButton
+                Spacer()
+                if !shapeSetGame.cardsAllDealt {
+                    dealButton
+                    Spacer()
+                }
             }
         }
         .padding()
@@ -47,6 +50,13 @@ struct ShapeSetGameView: View {
             .onTapGesture {
                 shapeSetGame.choose(card)
             }
+    }
+    
+    var hintButton: some View {
+        Button("Hint") {
+            shapeSetGame.hint()
+        }
+        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
     }
     
     var dealButton: some View {

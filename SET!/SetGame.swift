@@ -9,12 +9,19 @@ import Foundation
 
 struct SetGame {
     private(set) var cards: Array<Card>
-    private(set) var lastDealtCardIndex = 0
+    private var lastDealtCardIndex = 0
     var isFinished: Bool {
-        cards.indices.filter({ cards[$0].status == .matched }).count == 81
+        // Check if there are sets available on table
+        var setsAvailable = true
+        
+        if cards.indices.filter({ cards[$0].status == .matched }).count > 60 {
+            (setsAvailable, _) = findAvailableSet()
+        }
+        
+        return !setsAvailable
     }
     var cardsAllDealt: Bool {
-        lastDealtCardIndex > 80
+        lastDealtCardIndex >= Constants.numOfCards
     }
         
     init() {
@@ -34,7 +41,41 @@ struct SetGame {
         }
         
         cards.shuffle()
-        deal(numberofCards: 12)
+        deal(Constants.startingNumOfCards)
+    }
+    
+    // Return (Bool: If there are still available sets on table, card indicies of the available set)
+    func findAvailableSet() -> (Bool, [Int]) {
+        var setsAvailable = false
+        let cardsOnTable = cards.indices.filter({ cards[$0].status == .onTable })
+    
+        let possibleSets = combos(elements: cardsOnTable, k: Constants.numOfCardsOfAMatchedSet)
+        var avaiableSet = [-1, -1, -1]
+        
+        for cardSet in possibleSets {
+            
+            if setsAvailable { break }
+            
+            if let matched = cardsAreMatched(cardSet) {
+                avaiableSet = cardSet
+                setsAvailable = matched
+            }
+        }
+        
+        return (stillHaveSets: setsAvailable, cardIndicesOfSet: avaiableSet)
+    }
+    
+    mutating func deal(_ numberofCards: Int = Constants.defaultNumofDealingCards) {
+        let matchedCards = cards.indices.filter({ cards[$0].isMatched == true })
+        
+        if matchedCards.count == Constants.numOfCardsOfAMatchedSet {
+            dealInPlace(matchedCards)
+        }
+        else {
+            for _ in 0..<numberofCards {
+                if dealOneCard() == nil { break }
+            }
+        }
     }
     
     // If there are cards in the deck, deal one.
@@ -47,19 +88,6 @@ struct SetGame {
             return lastDealtCardIndex - 1
         }
         return nil
-    }
-    
-    mutating func deal(numberofCards: Int = 3) {
-        let matchedCards = cards.indices.filter({ cards[$0].isMatched == true })
-        
-        if matchedCards.count == 3 {
-            dealInPlace(matchedCards)
-        }
-        else {
-            for _ in 0..<numberofCards {
-                if dealOneCard() == nil { break }
-            }
-        }
     }
     
     private mutating func dealInPlace(_ indicesOfCardsBeingReplaced: [Int]) {
@@ -78,17 +106,18 @@ struct SetGame {
     private var allChosenCardsIndices: [Int] {
         cards.indices.filter {cards[$0].isSelected}
     }
+    
     // Return true or false based on the rules
-    // Return nil if the number of cards passed != 3
+    // Return nil if the number of cards passed in != Constants.numOfCardsOfAMatchedSet
     private func cardsAreMatched(_ cardsIndices: [Int]) -> Bool? {
-        if cardsIndices.count != 3 {
+        if cardsIndices.count != Constants.numOfCardsOfAMatchedSet {
             return nil
         }
         
 //        return true
         
         var matched = true
-        for indexOfFeatures in 0..<4 {
+        for indexOfFeatures in 0..<Constants.numOfFeatures {
             if !matched { break }
                 
             let featureisMatched = featuresAreMatched(featureIndices: [
@@ -138,6 +167,14 @@ struct SetGame {
         }
     }
     
+    struct Constants {
+        static let numOfFeatures = 4
+        static let numOfCards = 81
+        static let startingNumOfCards = 12
+        static let defaultNumofDealingCards = 3
+        static let numOfCardsOfAMatchedSet = 3
+    }
+    
     struct Card: Identifiable, CustomStringConvertible {
         let id: String
         var status = cardStatus.inDeck
@@ -148,11 +185,12 @@ struct SetGame {
         var description: String {
             id + "\n" + "\(status)"
         }
+        
+        enum cardStatus: String {
+            case inDeck
+            case onTable
+            case matched
+        }
     }
     
-    enum cardStatus: String {
-        case inDeck
-        case onTable
-        case matched
-    }
 }

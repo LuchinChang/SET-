@@ -17,6 +17,7 @@
 		5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */; };
 		5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */; };
 		5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7E2BD785A900CF3AC3 /* theme.swift */; };
+		5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B572BD9F6F300FDDFA2 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
 		5B133A7E2BD785A900CF3AC3 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
+		5B778B572BD9F6F300FDDFA2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				5B133A622BD5F08500CF3AC3 /* SET_App.swift */,
 				5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */,
 				5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */,
+				5B778B572BD9F6F300FDDFA2 /* Utils.swift */,
 				5B133A722BD60E8400CF3AC3 /* CardView.swift */,
 				5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */,
 				5B133A7E2BD785A900CF3AC3 /* theme.swift */,
@@ -157,6 +160,7 @@
 			files = (
 				5B133A652BD5F08500CF3AC3 /* ShapeSetGameView.swift in Sources */,
 				5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */,
+				5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */,
 				5B133A752BD62D1000CF3AC3 /* Test.swift in Sources */,
 				5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */,
 				5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */,

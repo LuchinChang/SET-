@@ -13,12 +13,40 @@ class ShapeSetGame: ObservableObject {
     
     var cardsAllDealt: Bool { game.cardsAllDealt }
     var isFinished: Bool { game.isFinished }
-    var cards: Array<SetGame.Card> { game.cards.filter {$0.status == .onTable} }
+    var cardsOnTable: Array<SetGame.Card> { game.cards.filter {$0.status == .onTable} }
+//    var cards: Array<SetGame.Card> { game.cards }
    
     
     // MARK: - Intent
     func choose(_ card: SetGame.Card) {
         game.chooseCard(card)
+    }
+    
+    func hint() {
+        var available: Bool
+        var availableSet = [Int]()
+        let cards = game.cards
+        let selectedCards = cards.indices.filter({ cards[$0].isSelected })
+        
+        if selectedCards.count < 3 {
+            (available, availableSet) = game.findAvailableSet()
+            
+            if available {
+                // Deselect currently selected cards
+                for selectedCardIndex in selectedCards {
+                    choose(cards[selectedCardIndex])
+                }
+                // Select a Set
+                for cardIndex in availableSet {
+                    choose(cards[cardIndex])
+                }
+            }
+        }
+        else {
+            if let firstCard = selectedCards.first {
+                choose(cards[firstCard])
+            }
+        }
     }
    
     func deal() {
