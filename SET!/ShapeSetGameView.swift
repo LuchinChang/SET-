@@ -11,7 +11,7 @@ struct ShapeSetGameView: View {
     @ObservedObject var shapeSetGame: ShapeSetGame
     
     let cardAspectRatio: Double = 2/3
-    
+    let deckWidth: CGFloat = 70
     
     var body: some View {
         Group {
@@ -24,39 +24,72 @@ struct ShapeSetGameView: View {
         VStack(spacing: 0) {
             banner
                 .padding()
-            AspectVGridWithScrollOption(shapeSetGame.cardsOnTable, aspectRatio: cardAspectRatio, content: buildCardView(_:))
-            Spacer()
-            HStack {
-                Spacer()
-                hintButton
-                Spacer()
-                if !shapeSetGame.cardsAllDealt {
-                    dealButton
-                    Spacer()
-                }
+            AspectVGridWithScrollOption(shapeSetGame.cardsOnTable, aspectRatio: cardAspectRatio) { card in
+                buildCardView(card)
+                    .onTapGesture {
+                        shapeSetGame.choose(card)
+                    }
             }
+            Spacer()
+            bottom
         }
         .padding()
     }
     
     func buildCardView(_ card: SetGame.Card) -> some View {
-        let number = shapeSetGame.getSymbolQuantity(card)
-        let shading = shapeSetGame.getSymbolShadingType(card)
-        let color = shapeSetGame.getSymbolColor(card)
-        let shape = shapeSetGame.getSymbolShape(card)
-        
+        let (number, shading, color, shape) = shapeSetGame.getSymbolFeatures(card)
         return CardView(card, number, shading, color, shape)
-            .padding(3)
-            .onTapGesture {
-                shapeSetGame.choose(card)
-            }
     }
     
-    var hintButton: some View {
-        Button("Hint") {
-            shapeSetGame.hint()
+    var bottom: some View {
+        HStack {
+            setPile
+            Spacer()
+            hint
+            Spacer()
+            deck
         }
-        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+        .padding(3.5)
+//        .background(.green)
+    }
+    
+    var hint: some View {
+        VStack {
+            Button("Hint") {
+                shapeSetGame.hint()
+            }
+            .font(.largeTitle)
+            .bold()
+            .padding(3)
+            
+            Text("\(shapeSetGame.cardsInDeck.count) / 81")
+                .foregroundStyle(.gray)
+        }
+//        .foregroundStyle(.blue)
+    }
+    
+    var setPile: some View {
+        ZStack {
+            ForEach(Array(shapeSetGame.cardsMatched.enumerated()), id: \.element.id) { index, card in
+                buildCardView(card)
+//                    .offset(y: CGFloat(index) * -1)
+            }
+        }
+        .frame(width: deckWidth, height: deckWidth / cardAspectRatio)
+    }
+    
+    var deck: some View {
+        ZStack {
+            ForEach(Array(shapeSetGame.cardsInDeck.enumerated()), id: \.element.id) { index, card in
+                buildCardView(card)
+                    .foregroundStyle(.yellow)
+                //                    .offset(y: CGFloat(index) * -1)
+            }
+        }
+        .onTapGesture {
+            shapeSetGame.deal()
+        }
+        .frame(width:deckWidth, height: deckWidth / cardAspectRatio)
     }
     
     var dealButton: some View {
@@ -82,7 +115,7 @@ struct ShapeSetGameView: View {
     }
        
     var banner: some View {
-        VStack {
+        VStack(spacing:0) {
             title
             newGameButtone
         }
@@ -93,13 +126,18 @@ struct ShapeSetGameView: View {
             shapeSetGame.newGame()
         }
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-        
     }
     
     var title: some View {
-        Text("SET!")
+        Text(" SET! ")
             .font(.largeTitle)
+            .bold()
+            .italic()
+            .foregroundStyle(.blue)
+            .background(Color.yellow)
+            .cornerRadius(10)
             .padding(.vertical, 1)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
             
     }
 }

@@ -181,6 +181,9 @@ struct SetGame {
         var isSelected = false
         var isMatched: Bool? = nil
         let features: [Int]
+        var isFaceUp: Bool {
+            self.status == .inDeck ? false : true
+        }
         
         var description: String {
             id + "\n" + "\(status)"

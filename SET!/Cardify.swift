@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct Cardify: ViewModifier {
-    var isFaceUp: Bool = true
-    var isSelected: Bool = true
-    var isMatched: Bool? = nil
+    var isFaceUp: Bool
+    var isSelected: Bool
+    var isMatched: Bool?
     
-    init(isFaceUp: Bool, isSelected: Bool, isMatched: Bool? = nil) {
+    init(isFaceUp: Bool = true, isSelected: Bool = false, isMatched: Bool? = nil) {
         self.isFaceUp = isFaceUp
         self.isSelected = isSelected
         self.isMatched = isMatched
@@ -25,6 +25,8 @@ struct Cardify: ViewModifier {
                 .background(base.fill(.white))
                 .overlay(content)
                 .matchedView(isMatched: isMatched)
+                .scaleEffect(isSelected ? Constants.scaleUp : 1)
+                .padding(Constants.paddingSize)
                 .opacity(isFaceUp ? 1 : 0)
             base.fill()
                 .opacity(isFaceUp ? 0 : 1)
@@ -33,11 +35,13 @@ struct Cardify: ViewModifier {
     }
     
     private struct Constants {
-        static let cornerRadius: CGFloat = 12
+        static let cornerRadius: CGFloat = 8
         struct lineWidth {
-            static let Selected: CGFloat = 4
+            static let Selected: CGFloat = 3
             static let nonSelected: CGFloat = 2
         }
+        static let scaleUp: CGFloat = 1.05
+        static let paddingSize: CGFloat = 3.5
     }
 }
 
@@ -70,7 +74,7 @@ struct Match: ViewModifier {
 }
 
 extension View {
-    func cardify(isFaceUp: Bool, isSelected: Bool, isMatched: Bool?) -> some View {
+    func cardify(isFaceUp: Bool = true, isSelected: Bool = false, isMatched: Bool? = nil) -> some View {
         modifier(Cardify(isFaceUp: isFaceUp, isSelected: isSelected, isMatched: isMatched))
     }
     

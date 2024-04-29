@@ -18,6 +18,7 @@
 		5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */; };
 		5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7E2BD785A900CF3AC3 /* theme.swift */; };
 		5B1413FD2BDF4B5F0075EB16 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */; };
+		5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FE2BDF83760075EB16 /* AnyShape.swift */; };
 		5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B572BD9F6F300FDDFA2 /* Utils.swift */; };
 		5B778B5A2BDA3A1000FDDFA2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B592BDA3A1000FDDFA2 /* Diamond.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
 		5B133A7E2BD785A900CF3AC3 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
 		5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		5B1413FE2BDF83760075EB16 /* AnyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyShape.swift; sourceTree = "<group>"; };
 		5B778B572BD9F6F300FDDFA2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5B778B592BDA3A1000FDDFA2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		5B133A612BD5F08500CF3AC3 /* SET! */ = {
 			isa = PBXGroup;
 			children = (
+				5B1413FE2BDF83760075EB16 /* AnyShape.swift */,
 				5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */,
 				5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */,
 				5B133A622BD5F08500CF3AC3 /* SET_App.swift */,
@@ -174,6 +177,7 @@
 				5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */,
 				5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */,
 				5B778B5A2BDA3A1000FDDFA2 /* Diamond.swift in Sources */,
+				5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */,
 				5B133A732BD60E8400CF3AC3 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ struct CardView: View {
     
     var body: some View {
         symbol
-            .cardify(isFaceUp: true, isSelected: card.isSelected, isMatched: card.isMatched)
+            .cardify(isFaceUp: card.isFaceUp, isSelected: card.isSelected, isMatched: card.isMatched)
     }
 }
 

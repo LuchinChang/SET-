@@ -8,24 +8,29 @@
 import SwiftUI
 
 class ShapeSetGame: ObservableObject {
+    typealias Card = SetGame.Card
+    
     private var theme = createTheme()
     @Published private var game = createSetGame()
-    
+        
     var cardsAllDealt: Bool { game.cardsAllDealt }
     var isFinished: Bool { game.isFinished }
-    var cardsOnTable: Array<SetGame.Card> { game.cards.filter {$0.status == .onTable} }
-//    var cards: Array<SetGame.Card> { game.cards }
-   
+    var cards: Array<SetGame.Card> { game.cards }
+    var cardsInDeck: Array<Card> { cards.filter {$0.status == .inDeck} }
+    var cardsOnTable: Array<Card> { cards.filter {$0.status == .onTable} }
+    var cardsMatched: Array<Card> { cards.filter {$0.status == .matched} }
     
     // MARK: - Intent
     func choose(_ card: SetGame.Card) {
-        game.chooseCard(card)
+        if card.status == .onTable {
+            game.chooseCard(card)
+        }
     }
     
     func hint() {
         var available: Bool
         var availableSet = [Int]()
-        let cards = game.cards
+//        let cards = game.cards
         let selectedCards = cards.indices.filter({ cards[$0].isSelected })
         
         if selectedCards.count < 3 {
@@ -57,24 +62,17 @@ class ShapeSetGame: ObservableObject {
         game = ShapeSetGame.createSetGame()
     }
     
+    func getSymbolFeatures(_ card: Card) -> (Int, SymbolShading, Color, AnyShape) {
+        return (
+            number: theme.feat1Factory(card.features[0]),
+            shading: theme.feat2Factory(card.features[1]),
+            color: theme.feat3Factory(card.features[2]),
+            shape: theme.feat4Factory(card.features[3])
+        )
+    }
+    
     private static func createSetGame() -> SetGame {
         SetGame()
-    }
-    
-    func getSymbolQuantity (_ card: SetGame.Card) -> Int {
-        theme.feat1Factory(card.features[0])
-    }
-    
-    func getSymbolShadingType(_ card: SetGame.Card) -> SymbolShading {
-        theme.feat2Factory(card.features[1])
-    }
-    
-    func getSymbolColor (_ card: SetGame.Card) -> Color {
-        theme.feat3Factory(card.features[2])
-    }
-    
-    func getSymbolShape (_ card: SetGame.Card) -> AnyShape {
-        theme.feat4Factory(card.features[3])
     }
     
     // Number, Shading, Color, Shape
@@ -91,7 +89,8 @@ class ShapeSetGame: ObservableObject {
             },
             feat4Factory: { index in
                 SymbolShape(rawValue:index)!.getShape()
-            }
+            },
+            color: .yellow
         )
     }
 }
@@ -136,16 +135,3 @@ enum SymbolShape: Int {
     }
 }
 
-struct AnyShape: Shape {
-    private let pathClosure: @Sendable (CGRect) -> Path
-
-    init<S: Shape>(_ shape: S) where S: Sendable {
-        self.pathClosure = { rect in
-            shape.path(in: rect)
-        }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        pathClosure(rect)
-    }
-}
