@@ -8,55 +8,25 @@
 import SwiftUI
 
 struct CardView: View {
-//    @State private var isSelected = false
-    @State private var isMatched: Bool? = true
-
     let card: SetGame.Card
-    let number: Int
-    let color: Color
-    let shading: SymbolShading
-    let shape: AnyShape
+    let symbol: SymbolView
     
     init(_ card: SetGame.Card, _ number: Int, _ shading: SymbolShading, _ color: Color, _ shape: AnyShape) {
         self.card = card
-        self.number = number
-        self.color = color
-        self.shading = shading
-        self.shape = shape
+        self.symbol = SymbolView(number: number, shading: shading, color: color, shape: shape)
     }
     
     var body: some View {
-        ZStack {
-            let base = RoundedRectangle(cornerRadius: 12).fill(.white)
-            let symbol = SymbolView(number: number, shading: shading, color: color, shape: shape)
-
-            Group {
-                base.strokeBorder(lineWidth: card.isSelected ? 4 : 2)
-                symbol
-                
-                if card.isSelected, let isMatched = card.isMatched {
-                    matchedView(isMatched)
-                }
-            }
-            
-        }
-    }
-    
-    func matchedView(_ isMatched: Bool) -> some View {
-        let indicator = isMatched ? "✓" : "X"
-        return Text(indicator)
-            .foregroundStyle(isMatched ? .green : .red)
-            .font(.system(size: 200))
-            .minimumScaleFactor(0.01)
-            .aspectRatio(1, contentMode: .fit)
+        symbol
+            .cardify(isFaceUp: true, isSelected: card.isSelected, isMatched: card.isMatched)
     }
 }
 
-struct SymbolView<S: Shape>: View {
+struct SymbolView: View {
     let number: Int
     let shading: SymbolShading
     let color: Color
-    let shape: S
+    let shape: AnyShape
     
     let aspectRatio: Double = 5/1
     let widthPortion: Double = 0.8

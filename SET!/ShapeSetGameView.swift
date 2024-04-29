@@ -76,7 +76,6 @@ struct ShapeSetGameView: View {
             Text("(touch to start a new game)")
                 .foregroundStyle(.gray)
         }
-        .background(.gray)
         .onTapGesture {
             shapeSetGame.newGame()
         }

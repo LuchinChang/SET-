@@ -127,7 +127,7 @@ enum SymbolShape: Int {
     func getShape() -> AnyShape {
         switch self {
         case .rectangle:
-            return AnyShape(Rectangle())
+            return AnyShape(Diamond(widthRatio: 1, heightRatio: 1))
         case .diamond:
             return AnyShape(RoundedRectangle(cornerRadius: 12))
         case .ellipse:
