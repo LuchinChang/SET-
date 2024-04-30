@@ -53,9 +53,9 @@ class ShapeSetGame: ObservableObject {
             }
         }
     }
-   
-    func deal() {
-        game.deal()
+        
+    func deal(_ numOfCards: Int = 3) {
+        game.deal(numOfCards)
     }
     
     func newGame() {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Cardify: ViewModifier {
+struct Cardify: ViewModifier, Animatable {
     var isFaceUp: Bool
     var isSelected: Bool
     var isMatched: Bool?
@@ -21,17 +21,31 @@ struct Cardify: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
-            base.strokeBorder(lineWidth: isSelected ? Constants.lineWidth.Selected : Constants.lineWidth.nonSelected)
+            base.strokeBorder(borderColor, lineWidth: isSelected ? Constants.lineWidth.Selected : Constants.lineWidth.nonSelected)
                 .background(base.fill(.white))
                 .overlay(content)
-                .matchedView(isMatched: isMatched)
+                .matchIcon(isMatched: isMatched)
                 .scaleEffect(isSelected ? Constants.scaleUp : 1)
                 .padding(Constants.paddingSize)
                 .opacity(isFaceUp ? 1 : 0)
+                .transition(.identity)
+                .animation(nil, value: isSelected)
             base.fill()
+                .strokeBorder(borderColor, lineWidth: Constants.lineWidth.nonSelected)
                 .opacity(isFaceUp ? 0 : 1)
         }
-//        .rotation3DEffect(.degrees(rotation), axis: (0,1,0))
+        
+    }
+    
+    var borderColor: Color {
+        switch isMatched {
+        case true:
+                .green
+        case false:
+                .red
+        default:
+                .black
+        }
     }
     
     private struct Constants {
@@ -45,13 +59,14 @@ struct Cardify: ViewModifier {
     }
 }
 
-struct Match: ViewModifier {
+struct MatchIcon: ViewModifier {
     var isMatched: Bool? = nil
     
     func body(content: Content) -> some View {
         Group {
             if let isMatched {
-                content.overlay(matchedView(isMatched))
+                content
+                    .overlay(getMatchedIcon(isMatched))
             }
             else {
                 content
@@ -59,12 +74,13 @@ struct Match: ViewModifier {
         }
     }
     
-    func matchedView(_ isMatched: Bool) -> some View {
+    func getMatchedIcon(_ isMatched: Bool) -> some View {
         Text(isMatched ? Constants.matchedIndicator : Constants.noMatchedIndicator)
             .foregroundStyle(isMatched ? .green : .red)
             .font(.system(size: 200))
             .minimumScaleFactor(0.01)
             .aspectRatio(1, contentMode: .fit)
+            
     }
     
     private struct Constants {
@@ -78,7 +94,7 @@ extension View {
         modifier(Cardify(isFaceUp: isFaceUp, isSelected: isSelected, isMatched: isMatched))
     }
     
-    func matchedView(isMatched: Bool?) -> some View {
-        modifier(Match(isMatched: isMatched))
+    func matchIcon(isMatched: Bool?) -> some View {
+        modifier(MatchIcon(isMatched: isMatched))
     }
 }

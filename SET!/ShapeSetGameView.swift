@@ -22,18 +22,28 @@ struct ShapeSetGameView: View {
     
     var playingView: some View {
         VStack(spacing: 0) {
-            banner
-                .padding()
-            AspectVGridWithScrollOption(shapeSetGame.cardsOnTable, aspectRatio: cardAspectRatio) { card in
-                buildCardView(card)
-                    .onTapGesture {
-                        shapeSetGame.choose(card)
-                    }
-            }
+            banner.padding()
+            playingAreaView
             Spacer()
             bottom
         }
         .padding()
+    }
+    
+    var playingAreaView: some View {
+        AspectVGridWithScrollOption(shapeSetGame.cardsOnTable, aspectRatio: cardAspectRatio) { card in
+            if card.status == .onTable {
+                buildCardView(card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .matchedGeometryEffect(id: card.id, in: discardNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            shapeSetGame.choose(card)
+                        }
+                    }
+            }
+        }
     }
     
     func buildCardView(_ card: SetGame.Card) -> some View {
@@ -43,74 +53,88 @@ struct ShapeSetGameView: View {
     
     var bottom: some View {
         HStack {
-            setPile
+            discardPile
             Spacer()
             hint
             Spacer()
             deck
         }
         .padding(3.5)
-//        .background(.green)
     }
     
     var hint: some View {
         VStack {
             Button("Hint") {
-                shapeSetGame.hint()
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    shapeSetGame.hint()
+                }
             }
             .font(.largeTitle)
             .bold()
-            .padding(3)
+            .padding(.bottom, 3)
             
             Text("\(shapeSetGame.cardsInDeck.count) / 81")
                 .foregroundStyle(.gray)
         }
-//        .foregroundStyle(.blue)
     }
     
-    var setPile: some View {
+    @Namespace private var discardNamespace
+    var discardPile: some View {
         ZStack {
             ForEach(Array(shapeSetGame.cardsMatched.enumerated()), id: \.element.id) { index, card in
                 buildCardView(card)
+                    .matchedGeometryEffect(id: card.id, in: discardNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
 //                    .offset(y: CGFloat(index) * -1)
             }
         }
         .frame(width: deckWidth, height: deckWidth / cardAspectRatio)
     }
     
+    @Namespace private var dealingNamespace
     var deck: some View {
         ZStack {
             ForEach(Array(shapeSetGame.cardsInDeck.enumerated()), id: \.element.id) { index, card in
                 buildCardView(card)
                     .foregroundStyle(.yellow)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
                 //                    .offset(y: CGFloat(index) * -1)
             }
         }
         .onTapGesture {
-            shapeSetGame.deal()
+            deal(3)
         }
         .frame(width:deckWidth, height: deckWidth / cardAspectRatio)
     }
     
-    var dealButton: some View {
-        Button("Deal") {
-            shapeSetGame.deal()
+    private func deal(_ numOfCards: Int) {
+        var delay: TimeInterval = 0
+        for _ in 0..<numOfCards {
+            withAnimation(.easeInOut(duration: 1).delay(delay)) {
+                shapeSetGame.deal(1)
+            }
+            delay += 0.2
         }
-        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
     }
     
     var finishedView: some View {
         VStack {
             Spacer()
-            Text("Congrats!!")
+            Text("Congratulations!!")
                 .font(.largeTitle)
+                .bold()
+                .italic()
+                .foregroundStyle(.blue)
                 .frame(maxWidth: .infinity)
             Spacer()
             Text("(touch to start a new game)")
+                .bold()
                 .foregroundStyle(.gray)
         }
+        .background(.yellow)
         .onTapGesture {
-            shapeSetGame.newGame()
+           newGame()
         }
     }
        
@@ -123,7 +147,7 @@ struct ShapeSetGameView: View {
     
     var newGameButtone: some View {
         Button("⨁") {
-            shapeSetGame.newGame()
+            newGame()
         }
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
     }
@@ -139,6 +163,16 @@ struct ShapeSetGameView: View {
             .padding(.vertical, 1)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
             
+    }
+    
+    private func newGame() {
+        shapeSetGame.newGame()
+        deal(12)
+    }
+    
+    init(shapeSetGame: ShapeSetGame) {
+        self.shapeSetGame = shapeSetGame
+        newGame()
     }
 }
 

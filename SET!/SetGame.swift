@@ -41,7 +41,7 @@ struct SetGame {
         }
         
         cards.shuffle()
-        deal(Constants.startingNumOfCards)
+//        deal(Constants.startingNumOfCards)
     }
     
     // Return (Bool: If there are still available sets on table, card indicies of the available set)
@@ -186,7 +186,7 @@ struct SetGame {
         }
         
         var description: String {
-            id + "\n" + "\(status)"
+            id + "\n" + "\(status) " + "isSelected \(isSelected) " + "isMatched \(String(describing: isMatched))"
         }
         
         enum cardStatus: String {

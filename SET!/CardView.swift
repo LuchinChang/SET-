@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
-    let card: SetGame.Card
-    let symbol: SymbolView
+    private let card: SetGame.Card
+    private let symbol: SymbolView
     
     init(_ card: SetGame.Card, _ number: Int, _ shading: SymbolShading, _ color: Color, _ shape: AnyShape) {
         self.card = card
@@ -19,6 +19,19 @@ struct CardView: View {
     var body: some View {
         symbol
             .cardify(isFaceUp: card.isFaceUp, isSelected: card.isSelected, isMatched: card.isMatched)
+            .rotationEffect(Angle(degrees: card.isMatched == false ? 2.5 : 0))
+            .scaleEffect(card.isMatched == true ? 1.05 : 1)
+            .animation(.linear(duration: 0.1).repeat(while: card.isMatched != nil), value: card.isMatched)
+    }
+}
+
+extension Animation {
+    func `repeat`(while expression: Bool, autoreverses: Bool = true) -> Animation {
+        if expression {
+            return self.repeatForever(autoreverses: autoreverses)
+        } else {
+            return self
+        }
     }
 }
 
