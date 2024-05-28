@@ -41,9 +41,6 @@ struct SymbolView: View {
     let color: Color
     let shape: AnyShape
     
-    let aspectRatio: Double = 5/1
-    let widthPortion: Double = 0.8
-    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -52,14 +49,34 @@ struct SymbolView: View {
             VStack(spacing:10) {
                 ForEach (0..<number, id:\.self) { _ in
                     shape
-                        .stroke(color, lineWidth: shading == .open ? 2 : 0)
-                        .fill(shading == .open ? .clear : color)
-                        .opacity(shading == SymbolShading.semiTransparent ? 0.3 : 1)
-                        .aspectRatio(aspectRatio, contentMode: .fit)
-                        .frame(width: width * widthPortion)
+                        .shadingify(shading)
+                        .foregroundStyle(color)
+                        .aspectRatio(Constants.aspectRatio, contentMode: .fit)
+                        .frame(width: width * Constants.widthPortion)
                 }
             }
             .frame(width: width, height: height)
+        }
+    }
+    
+    private struct Constants {
+        static let aspectRatio: Double = 5/1
+        static let widthPortion: Double = 0.8
+    }
+}
+
+extension Shape {
+    func shadingify(_ shadingStyle: SymbolShading) -> some View {
+        return Group {
+            switch shadingStyle {
+            case .open:
+                self.stroke(lineWidth: 2)
+            case.semiTransparent:
+                self.fill()
+                    .opacity(0.3)
+            case .solid:
+                self.fill()
+            }
         }
     }
 }

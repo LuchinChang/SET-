@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct Cardify: ViewModifier, Animatable {
-    var isFaceUp: Bool
-    var isSelected: Bool
+    var isFaceUp = true
+    var isSelected = false
     var isMatched: Bool?
-    
-    init(isFaceUp: Bool = true, isSelected: Bool = false, isMatched: Bool? = nil) {
-        self.isFaceUp = isFaceUp
-        self.isSelected = isSelected
-        self.isMatched = isMatched
-    }
     
     func body(content: Content) -> some View {
         ZStack {
@@ -24,7 +18,7 @@ struct Cardify: ViewModifier, Animatable {
             base.strokeBorder(borderColor, lineWidth: isSelected ? Constants.lineWidth.Selected : Constants.lineWidth.nonSelected)
                 .background(base.fill(.white))
                 .overlay(content)
-                .matchIcon(isMatched: isMatched)
+                .matchIcon(isMatched)
                 .scaleEffect(isSelected ? Constants.scaleUp : 1)
                 .padding(Constants.paddingSize)
                 .opacity(isFaceUp ? 1 : 0)
@@ -94,7 +88,7 @@ extension View {
         modifier(Cardify(isFaceUp: isFaceUp, isSelected: isSelected, isMatched: isMatched))
     }
     
-    func matchIcon(isMatched: Bool?) -> some View {
+    func matchIcon(_ isMatched: Bool?) -> some View {
         modifier(MatchIcon(isMatched: isMatched))
     }
 }

@@ -12,15 +12,17 @@
 		5B133A672BD5F08600CF3AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B133A662BD5F08600CF3AC3 /* Assets.xcassets */; };
 		5B133A6A2BD5F08600CF3AC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B133A692BD5F08600CF3AC3 /* Preview Assets.xcassets */; };
 		5B133A732BD60E8400CF3AC3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A722BD60E8400CF3AC3 /* CardView.swift */; };
-		5B133A752BD62D1000CF3AC3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A742BD62D1000CF3AC3 /* Test.swift */; };
 		5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */; };
 		5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */; };
 		5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */; };
 		5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A7E2BD785A900CF3AC3 /* theme.swift */; };
 		5B1413FD2BDF4B5F0075EB16 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */; };
 		5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FE2BDF83760075EB16 /* AnyShape.swift */; };
+		5B27E61A2C05465500BA6E34 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B27E6192C05465500BA6E34 /* GameKitHelper.swift */; };
+		5B27E61C2C054B0B00BA6E34 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B27E61B2C054B0B00BA6E34 /* GameOverView.swift */; };
 		5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B572BD9F6F300FDDFA2 /* Utils.swift */; };
-		5B778B5A2BDA3A1000FDDFA2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B592BDA3A1000FDDFA2 /* Diamond.swift */; };
+		5BC98DE52C064DE30036F767 /* InGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC98DE42C064DE30036F767 /* InGameView.swift */; };
+		5BC98DE72C065D730036F767 /* Shadingify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC98DE62C065D730036F767 /* Shadingify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,15 +32,18 @@
 		5B133A662BD5F08600CF3AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B133A692BD5F08600CF3AC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B133A722BD60E8400CF3AC3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		5B133A742BD62D1000CF3AC3 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGridWithScrollOption.swift; sourceTree = "<group>"; };
 		5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
 		5B133A7E2BD785A900CF3AC3 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
 		5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		5B1413FE2BDF83760075EB16 /* AnyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyShape.swift; sourceTree = "<group>"; };
+		5B27E6172C05394400BA6E34 /* SET!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SET!.entitlements"; sourceTree = "<group>"; };
+		5B27E6192C05465500BA6E34 /* GameKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
+		5B27E61B2C054B0B00BA6E34 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		5B778B572BD9F6F300FDDFA2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		5B778B592BDA3A1000FDDFA2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		5BC98DE42C064DE30036F767 /* InGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameView.swift; sourceTree = "<group>"; };
+		5BC98DE62C065D730036F767 /* Shadingify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadingify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,19 +76,13 @@
 		5B133A612BD5F08500CF3AC3 /* SET! */ = {
 			isa = PBXGroup;
 			children = (
-				5B1413FE2BDF83760075EB16 /* AnyShape.swift */,
-				5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */,
-				5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */,
+				5BC98DE32C0648410036F767 /* View */,
+				5BC98DE82C0681040036F767 /* ViewModel */,
 				5B133A622BD5F08500CF3AC3 /* SET_App.swift */,
-				5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */,
-				5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */,
-				5B778B572BD9F6F300FDDFA2 /* Utils.swift */,
-				5B133A722BD60E8400CF3AC3 /* CardView.swift */,
-				5B778B592BDA3A1000FDDFA2 /* Diamond.swift */,
-				5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */,
-				5B133A7E2BD785A900CF3AC3 /* theme.swift */,
-				5B133A742BD62D1000CF3AC3 /* Test.swift */,
+				5BC98DE92C06812E0036F767 /* Model */,
+				5B27E6172C05394400BA6E34 /* SET!.entitlements */,
 				5B133A662BD5F08600CF3AC3 /* Assets.xcassets */,
+				5B27E6182C05462700BA6E34 /* Game Center */,
 				5B133A682BD5F08600CF3AC3 /* Preview Content */,
 			);
 			path = "SET!";
@@ -95,6 +94,47 @@
 				5B133A692BD5F08600CF3AC3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5B27E6182C05462700BA6E34 /* Game Center */ = {
+			isa = PBXGroup;
+			children = (
+				5B27E6192C05465500BA6E34 /* GameKitHelper.swift */,
+			);
+			path = "Game Center";
+			sourceTree = "<group>";
+		};
+		5BC98DE32C0648410036F767 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B27E61B2C054B0B00BA6E34 /* GameOverView.swift */,
+				5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */,
+				5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */,
+				5B133A642BD5F08500CF3AC3 /* ShapeSetGameView.swift */,
+				5B133A722BD60E8400CF3AC3 /* CardView.swift */,
+				5BC98DE42C064DE30036F767 /* InGameView.swift */,
+				5BC98DE62C065D730036F767 /* Shadingify.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5BC98DE82C0681040036F767 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B133A7C2BD783D800CF3AC3 /* ShapeSetGame.swift */,
+				5B1413FE2BDF83760075EB16 /* AnyShape.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5BC98DE92C06812E0036F767 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B778B572BD9F6F300FDDFA2 /* Utils.swift */,
+				5B133A7A2BD7611B00CF3AC3 /* SetGame.swift */,
+				5B133A7E2BD785A900CF3AC3 /* theme.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,16 +207,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B27E61C2C054B0B00BA6E34 /* GameOverView.swift in Sources */,
+				5BC98DE72C065D730036F767 /* Shadingify.swift in Sources */,
 				5B1413FD2BDF4B5F0075EB16 /* Cardify.swift in Sources */,
 				5B133A652BD5F08500CF3AC3 /* ShapeSetGameView.swift in Sources */,
 				5B133A7F2BD785A900CF3AC3 /* theme.swift in Sources */,
 				5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */,
-				5B133A752BD62D1000CF3AC3 /* Test.swift in Sources */,
 				5B133A7D2BD783D800CF3AC3 /* ShapeSetGame.swift in Sources */,
+				5BC98DE52C064DE30036F767 /* InGameView.swift in Sources */,
 				5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */,
+				5B27E61A2C05465500BA6E34 /* GameKitHelper.swift in Sources */,
 				5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */,
 				5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */,
-				5B778B5A2BDA3A1000FDDFA2 /* Diamond.swift in Sources */,
 				5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */,
 				5B133A732BD60E8400CF3AC3 /* CardView.swift in Sources */,
 			);
@@ -309,10 +351,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SET!/SET!.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SET!/Preview Content\"";
-				DEVELOPMENT_TEAM = V48RH7T2UQ;
+				DEVELOPMENT_TEAM = M44ZGPXWK4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -320,12 +363,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lcchang.taiwan.SET-";
+				PRODUCT_BUNDLE_IDENTIFIER = lcchang.taiwan.SET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -338,10 +382,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SET!/SET!.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SET!/Preview Content\"";
-				DEVELOPMENT_TEAM = V48RH7T2UQ;
+				DEVELOPMENT_TEAM = M44ZGPXWK4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -349,12 +394,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lcchang.taiwan.SET-";
+				PRODUCT_BUNDLE_IDENTIFIER = lcchang.taiwan.SET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

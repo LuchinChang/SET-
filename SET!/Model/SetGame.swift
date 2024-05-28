@@ -32,7 +32,7 @@ struct SetGame {
                     for f4 in 0..<3 {
                         cards.append(
                             Card(id: "\(f1)\(f2)\(f3)\(f4)",
-                                 features: [f1, f2, f3, f4]
+                                 featureIndices: [f1, f2, f3, f4]
                                  )
                         )
                     }
@@ -121,9 +121,9 @@ struct SetGame {
             if !matched { break }
                 
             let featureisMatched = featuresAreMatched(featureIndices: [
-                cards[cardsIndices[0]].features[indexOfFeatures],
-                cards[cardsIndices[1]].features[indexOfFeatures],
-                cards[cardsIndices[2]].features[indexOfFeatures]
+                cards[cardsIndices[0]].featureIndices[indexOfFeatures],
+                cards[cardsIndices[1]].featureIndices[indexOfFeatures],
+                cards[cardsIndices[2]].featureIndices[indexOfFeatures]
             ])
             
             matched = matched && featureisMatched
@@ -180,7 +180,7 @@ struct SetGame {
         var status = cardStatus.inDeck
         var isSelected = false
         var isMatched: Bool? = nil
-        let features: [Int]
+        let featureIndices: [Int]
         var isFaceUp: Bool {
             self.status == .inDeck ? false : true
         }
