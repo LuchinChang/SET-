@@ -44,10 +44,3 @@ extension ShapeSetGame {
         dealWithAnimation(12)
     }
 }
-
-//
-//
-//#Preview {
-//    ShapeSetGameView()
-//        .environmentObject(ShapeSetGame())
-//}

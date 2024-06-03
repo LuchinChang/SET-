@@ -11,10 +11,10 @@ import SwiftUI
 struct SET_App: App {
     var body: some Scene {
         WindowGroup {
-//            @StateObject var shapeSetGamee = ShapeSetGame()
             
-            ShapeSetGameView(ShapeSetGame())
-//                .environmentObject(ShapeSetGame())
+//            ShapeSetGameView(ShapeSetGame())
+            
+            GameView(gameManager: GameManager())
         }
     }
 }

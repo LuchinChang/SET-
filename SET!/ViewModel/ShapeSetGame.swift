@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ShapeSetGame: ObservableObject {
+class ShapeSetGame: SetGameModeViewModel {
     typealias Card = SetGame.Card
     
     private var theme = Theme.shapeTheme
@@ -19,9 +19,18 @@ class ShapeSetGame: ObservableObject {
     var cardsInDeck: Array<Card> { cards.filter {$0.status == .inDeck} }
     var cardsOnTable: Array<Card> { cards.filter {$0.status == .onTable} }
     var cardsMatched: Array<Card> { cards.filter {$0.status == .matched} }
+    var isMultiPlayer = false
+    var playerNumber = (1, 1)
+    
+    init(theme: Theme = Theme.shapeTheme, game: SetGame = SetGame(), isMultiPlayer: Bool = false, playerNumber: (Int, Int) = (1, 1)) {
+        self.theme = theme
+        self.game = game
+        self.isMultiPlayer = isMultiPlayer
+        self.playerNumber = playerNumber
+    }
     
     // MARK: - Intent
-    func choose(_ card: SetGame.Card) {
+    func choose(_ card: Card) {
         if card.status == .onTable {
             game.chooseCard(card)
         }

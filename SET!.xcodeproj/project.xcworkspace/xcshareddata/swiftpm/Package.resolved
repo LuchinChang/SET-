@@ -1,0 +1,15 @@
+{
+  "originHash" : "402dc76176fd1cb61e5c7591037ad82dbc7d8a9ae997382ee5cbc564758f9af7",
+  "pins" : [
+    {
+      "identity" : "gamekitui.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftPackageRepository/GameKitUI.swift",
+      "state" : {
+        "revision" : "4e95f70fb99281d74913b840e8c593f33675f46b",
+        "version" : "0.5.1"
+      }
+    }
+  ],
+  "version" : 3
+}
