@@ -7,21 +7,18 @@
 
 import Foundation
 
-struct SetBlitz: MultiPlayer {
-    var minPlayer = 2
-    var maxPlayer = 2
+struct SetBlitz: MultiPlayer, TimedGame {
+    var isFinished: Bool {
+        remainingTime == 0
+    }
     
-   
-    var inGame = false
-    var isFinished = false
-    var setGame = SetGame()
     var remainingTime = Constants.maxRemainingTime
     
+    mutating func countingDown() {
+        remainingTime -= 1
+    }
     
-    
-    
-    // MARK: Constants
     private struct Constants {
-        static let maxRemainingTime = 120 // seconds
+        static let maxRemainingTime = 10 // seconds
     }
 }

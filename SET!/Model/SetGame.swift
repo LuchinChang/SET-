@@ -137,7 +137,7 @@ struct SetGame {
     }
     
     mutating func chooseCard(_ card: Card) {
-        if let chosenCardIndex = cards.firstIndex(where: { $0.id == card.id }) {
+        if let chosenCardsIndex = cards.firstIndex(where: { $0.id == card.id }) {
             let chosenSetOfCards = allChosenCardsIndices
             let matched = cardsAreMatched(chosenSetOfCards)
             
@@ -155,8 +155,8 @@ struct SetGame {
                 }
             }
             
-            if matched != true  || !chosenSetOfCards.contains(chosenCardIndex) {
-                cards[chosenCardIndex].isSelected.toggle()
+            if matched != true  || !chosenSetOfCards.contains(chosenCardsIndex) {
+                cards[chosenCardsIndex].isSelected.toggle()
             }
         }
         

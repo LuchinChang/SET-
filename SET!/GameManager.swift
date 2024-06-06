@@ -9,63 +9,80 @@ import Foundation
 import SwiftUI
 import GameKit
 
-
 class GameManager: NSObject, ObservableObject {
-    @Published var gameCenterHelper = GameCenterHelper()
+    @Published private(set) var status: GameStatus = .initial
+    @Published var isAuthenticated = false
+
+    @Published private(set) var gameMode: GameMode?
+    var gameModeManager: (any SetGameViewModel)?
     
-    @Published var status: GameStatus = .initial
-    @Published var gameModeManager: (any SetGameModeViewModel)?
-    var gameMode: GameMode?
-    var isAuthenticated: Bool?
+    @Published var findNewMatch = false
+    
+    let gameCenterHelper = GameCenterHelper.defaultHelper
+    
+    var localPlayer: GKLocalPlayer? {
+        GKLocalPlayer.local
+    }
     var match: GKMatch? {
         gameCenterHelper.match
     }
-    
  
-    private func getGameModeManager() -> any SetGameModeViewModel {
-        
-        let manager: any SetGameModeViewModel = switch gameMode {
-        case .setPractice: ShapeSetGame()
-        case .setBlitz: SetBlitzViewModel(match: match!)
-        default: ShapeSetGame()
+    private func getGameModeManager() {
+        switch gameMode {
+        case .setPractice: 
+            gameModeManager = ShapeSetGame()
+        case .setBlitz:
+            let viewModel = SetBlitzViewModel(match!, localPlayer: localPlayer!)
+            match?.delegate = viewModel
+            gameModeManager = viewModel
+        default:
+            gameModeManager = ShapeSetGame()
         }
-        
-        return manager
     }
-
     
     // MARK: Intentions
-    func authenticate() {
-        gameCenterHelper.authenticate()
-        status = .authenticated
-    }
-
-    func startGame(_ gameMode: GameMode) {       
+    func startGame(_ gameMode: GameMode) {
         self.gameMode = gameMode
-
-        if gameMode != .setPractice {
-            gameCenterHelper.findAMatch()
+     
+        if GameMode.multiPlayerGame.contains(gameMode) {
+            findNewMatch = true
         } else {
             initializeGame()
         }
     }
     
     func initializeGame() {
-        print("I am initing")
-        gameModeManager = getGameModeManager()
+        getGameModeManager()
         status = .inGame
     }
     
+    func finishGame() {
+        status = .menu
+    }
+    
+    override init() {
+        super.init()
+        
+        gameCenterHelper.authenticationSucceededHandler = {
+            self.status = .menu
+        }
+        
+        GameCenterHelper.defaultHelper.matchSucceededHandler = { [self] in
+            initializeGame()
+        }
+    }
+    
+    enum GameMode {
+        case setPractice
+        case setBlitz
+        
+        static let multiPlayerGame = Set([GameMode.setBlitz])
+    }
+    
+    enum GameStatus {
+        case initial
+        case menu
+        case inGame
+    }
 }
 
-enum GameMode {
-    case setPractice
-    case setBlitz
-}
-
-enum GameStatus {
-    case initial
-    case authenticated
-    case inGame
-    case gameOver
-}
