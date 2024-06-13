@@ -11,26 +11,22 @@ struct InGameView: View {
     @EnvironmentObject var gameManager: GameManager
     
     @State var adCoordinator = AdCoordinator()
-    
     var body: some View {
         VStack {
             switch gameManager.gameMode {
             case .setPractice:
-                PracticeSetGameView(gameManager.gameModeManager as! ShapeSetGame)
+                PracticeSetGameView(gameManager: gameManager)
             case .setBlitz:
-                BlitzSetGameView(gameManager.gameModeManager as! SetBlitzViewModel)
-            default:
-                Text("You are in the game View")
+                BlitzSetGameView(gameManager: gameManager)
+            case .none:
+                Text("There are problems setting up your game!")
             }
         }
         .onAppear {
             adCoordinator.loadAd()
         }
+        .environmentObject(gameManager)
         .environmentObject(adCoordinator)
     }
         
-}
-
-#Preview {
-    InGameView()
 }

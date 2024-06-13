@@ -14,32 +14,20 @@ class GameManager: ObservableObject {
     @Published var isAuthenticated = false
 
     @Published private(set) var gameMode: GameMode?
-    var gameModeManager: (any SetGameViewModel)?
+    
     
     @Published var findNewMatch = false
     
     let gameCenterHelper = GameCenterHelper.defaultHelper
     
     var localPlayer: GKLocalPlayer? {
-        GKLocalPlayer.local
+        gameCenterHelper.localPlayer as? GKLocalPlayer
     }
     var match: GKMatch? {
         gameCenterHelper.match
     }
  
-    private func getGameModeManager() {
-        switch gameMode {
-        case .setPractice: 
-            gameModeManager = ShapeSetGame()
-        case .setBlitz:
-            let viewModel = SetBlitzViewModel(match!, localPlayer: localPlayer!)
-            match?.delegate = viewModel
-            gameModeManager = viewModel
-        default:
-            gameModeManager = ShapeSetGame()
-        }
-    }
-    
+
     // MARK: Intentions
     func startGame(_ gameMode: GameMode) {
         self.gameMode = gameMode
@@ -51,8 +39,17 @@ class GameManager: ObservableObject {
         }
     }
     
+    func getPracticeSetGameVM() -> ShapeSetGame {
+        ShapeSetGame()
+    }
+    
+    func getBlitzzSetGameVM() -> SetBlitzViewModel {
+        let blitzSetGame = SetBlitzViewModel(match!, localPlayer: localPlayer!)
+        match?.delegate = blitzSetGame
+        return blitzSetGame
+    }
+    
     func initializeGame() {
-        getGameModeManager()
         status = .inGame
     }
     

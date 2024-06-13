@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PracticeSetGameInGameView: View {
-    @EnvironmentObject var PracticeSetGame: ShapeSetGame
+    @EnvironmentObject var practiceSetGame: ShapeSetGame
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,6 +18,9 @@ struct PracticeSetGameInGameView: View {
             bottom
         }
         .padding()
+        .onAppear {
+            practiceSetGame.newGame()
+        }
     }
     
     // MARK: - Banner
@@ -36,7 +39,7 @@ struct PracticeSetGameInGameView: View {
     
     var newGameButtone: some View {
         Button("⨁") {
-            PracticeSetGame.newGame()
+            practiceSetGame.newGame()
         }
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
     }
@@ -50,14 +53,14 @@ struct PracticeSetGameInGameView: View {
     
     // MARK: PlayingArea
     var playingAreaView: some View {
-        AspectVGridWithScrollOption(PracticeSetGame.cardsOnTable, aspectRatio: Constants.cardAspectRatio) { card in
+        AspectVGridWithScrollOption(practiceSetGame.cardsOnTable, aspectRatio: Constants.cardAspectRatio) { card in
             buildCardView(card)
                 .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                 .matchedGeometryEffect(id: card.id, in: discardNamespace)
                 .transition(.asymmetric(insertion: .identity, removal: .identity))
                 .onTapGesture {
                     withAnimation(.easeInOut(duration: 0.5)) {
-                        PracticeSetGame.choose(card)
+                        practiceSetGame.choose(card)
                     }
                 }
             
@@ -65,7 +68,7 @@ struct PracticeSetGameInGameView: View {
     }
     
     func buildCardView(_ card: SetGame.Card) -> some View {
-        let (number, shading, color, shape) = PracticeSetGame.getSymbolFeatures(card)
+        let (number, shading, color, shape) = practiceSetGame.getSymbolFeatures(card)
         return CardView(card, number, shading, color, shape)
     }
     
@@ -73,7 +76,7 @@ struct PracticeSetGameInGameView: View {
     @Namespace private var discardNamespace
     var discardPile: some View {
         ZStack {
-            ForEach(Array(PracticeSetGame.cardsMatched.enumerated()), id: \.element.id) { index, card in
+            ForEach(Array(practiceSetGame.cardsMatched.enumerated()), id: \.element.id) { index, card in
                 buildCardView(card)
                     .matchedGeometryEffect(id: card.id, in: discardNamespace)
                     .transition(.asymmetric(insertion: .identity, removal: .identity))
@@ -86,14 +89,14 @@ struct PracticeSetGameInGameView: View {
         VStack {
             Button("Hint") {
                 withAnimation(.easeInOut(duration: 0.5)) {
-                    PracticeSetGame.hint()
+                    practiceSetGame.hint()
                 }
             }
             .font(.largeTitle)
             .bold()
             .padding(.bottom, 3)
             
-            Text("\(PracticeSetGame.cardsInDeck.count) / 81")
+            Text("\(practiceSetGame.cardsInDeck.count) / 81")
                 .foregroundStyle(.gray)
         }
     }
@@ -101,7 +104,7 @@ struct PracticeSetGameInGameView: View {
     @Namespace private var dealingNamespace
     var deck: some View {
         ZStack {
-            ForEach(Array(PracticeSetGame.cardsInDeck.enumerated()), id: \.element.id) { index, card in
+            ForEach(Array(practiceSetGame.cardsInDeck.enumerated()), id: \.element.id) { index, card in
                 buildCardView(card)
                     .foregroundStyle(.yellow)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
@@ -109,7 +112,7 @@ struct PracticeSetGameInGameView: View {
             }
         }
         .onTapGesture {
-            PracticeSetGame.dealWithAnimation(3)
+            practiceSetGame.dealWithAnimation(3)
         }
         .frame(width:Constants.cardWidth, height: Constants.cardHeight)
     }

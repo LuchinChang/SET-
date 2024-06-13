@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct BlitzSetGameView: View {
-    @ObservedObject var blitzSetGame: SetBlitzViewModel
+    @EnvironmentObject var gameManager: GameManager
+    @StateObject private var blitzSetGame: SetBlitzViewModel
     
     var body: some View {
         Group {
             if blitzSetGame.isOver {
-                BlitzSetGameOverView().onTapGesture { blitzSetGame.newGame() }
+                BlitzSetGameOverView()
             } else {
                 BlitzSetGameInGameView()
             }
@@ -21,8 +22,7 @@ struct BlitzSetGameView: View {
         .environmentObject(blitzSetGame)
     }
     
-    init(_ blitzSetGame: SetBlitzViewModel) {
-        self.blitzSetGame = blitzSetGame
-        blitzSetGame.newGame()
+    init(gameManager: GameManager) {
+        _blitzSetGame = StateObject(wrappedValue: gameManager.getBlitzzSetGameVM())
     }
 }

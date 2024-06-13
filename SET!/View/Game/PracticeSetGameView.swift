@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct PracticeSetGameView: View {
-    @ObservedObject var shapeSetGame: ShapeSetGame
+    @EnvironmentObject var gameManager: GameManager
+    @StateObject private var shapeSetGame: ShapeSetGame
     
     var body: some View {
         Group {
             if shapeSetGame.isOver {
-                PractiveSetGameOverView().onTapGesture { shapeSetGame.newGame() }
+                PractiveSetGameOverView()
             } else {
                 PracticeSetGameInGameView()
-                    .environmentObject(shapeSetGame)
             }
         }
+        .environmentObject(shapeSetGame)
     }
     
-    init(_ shapeSetGame: ShapeSetGame) {
-        self.shapeSetGame = shapeSetGame
-        shapeSetGame.newGame()
+    init(gameManager: GameManager) {
+        _shapeSetGame = StateObject(wrappedValue: gameManager.getPracticeSetGameVM())
     }
 }
