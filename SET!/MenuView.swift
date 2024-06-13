@@ -24,9 +24,9 @@ struct MenuView: View {
                 NavigationLink(destination: GameModeChoosingView()) {
                     Text("Start Game!")
                 }
-                NavigationLink(destination: RewardedInterstitialContentView()) {
-                    Text("Gain Reward")
-                }
+//                NavigationLink(destination: RewardedInterstitialContentView()) {
+//                    Text("Gain Reward")
+//                }
             }
             .padding()
             .environmentObject(gameManager)

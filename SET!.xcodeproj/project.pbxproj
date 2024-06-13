@@ -206,10 +206,10 @@
 				5BBC51C82C0B9EB7007B5ED0 /* BlitzSetGameView.swift */,
 				5BBC51D62C0E75DC007B5ED0 /* BlitzSetGameInGameView.swift */,
 				5BBC51D92C0E76F6007B5ED0 /* BlitzSetGameOverView.swift */,
+				5B0941432C18F16B001AD0B6 /* BannerView.swift */,
 				5B133A642BD5F08500CF3AC3 /* PracticeSetGameView.swift */,
 				5BC98DE42C064DE30036F767 /* PracticeSetGameInGameView.swift */,
 				5B27E61B2C054B0B00BA6E34 /* PractiveSetGameOverView.swift */,
-				5B0941432C18F16B001AD0B6 /* BannerView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
