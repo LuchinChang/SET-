@@ -13,7 +13,7 @@ struct RewardedInterstitialContentView: View {
     @StateObject private var countdownTimer = CountdownTimer(10)
     @State private var showAdDialog = false
     @State private var showAd = false
-    let navigationTitle: String
+//    let navigationTitle: String
     
     var body: some View {
         ZStack {
@@ -61,7 +61,7 @@ struct RewardedInterstitialContentView: View {
                 viewModel.showAd()
             }
         }
-        .navigationTitle(navigationTitle)
+//        .navigationTitle(navigationTitle)
     }
     
     private func startNewGame() {
@@ -72,8 +72,8 @@ struct RewardedInterstitialContentView: View {
     }
 }
 
-struct RewardedIntersititalContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        RewardedInterstitialContentView(navigationTitle: "Rewarded Interstitial")
-    }
-}
+//struct RewardedIntersititalContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RewardedInterstitialContentView(navigationTitle: "Rewarded Interstitial")
+//    }
+//}

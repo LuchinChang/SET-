@@ -41,7 +41,6 @@ struct SetGame {
         }
         
         cards.shuffle()
-//        deal(Constants.startingNumOfCards)
     }
     
     // Return (Bool: If there are still available sets on table, card indicies of the available set)
@@ -113,8 +112,6 @@ struct SetGame {
         if cardsIndices.count != Constants.numOfCardsOfAMatchedSet {
             return nil
         }
-        
-//        return true
         
         var matched = true
         for indexOfFeatures in 0..<Constants.numOfFeatures {

@@ -8,7 +8,7 @@
 import SwiftUI
 import GoogleMobileAds
 
-struct BannerView: UIViewControllerRepresentable {
+struct AdBannerView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     @EnvironmentObject var gameManager: GameManager
     
@@ -40,9 +40,9 @@ struct BannerView: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, BannerViewControllerWidthDelegate, GADBannerViewDelegate {
-        let parent: BannerView
+        let parent: AdBannerView
         
-        init(_ parent: BannerView) {
+        init(_ parent: AdBannerView) {
             self.parent = parent
         }
         
@@ -80,18 +80,3 @@ struct BannerView: UIViewControllerRepresentable {
         }
     }
 }
-
-//struct BannerContentView: View {
-//    let navigationTitle: String
-//    
-//    var body: some View {
-//        BannerView()
-//            .navigationTitle(navigationTitle)
-//    }
-//}
-//
-//struct BannerContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BannerContentView(navigationTitle: "Banner")
-//    }
-//}

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import GameKit
 
-class GameManager: NSObject, ObservableObject {
+class GameManager: ObservableObject {
     @Published private(set) var status: GameStatus = .initial
     @Published var isAuthenticated = false
 
@@ -60,9 +60,7 @@ class GameManager: NSObject, ObservableObject {
         status = .menu
     }
     
-    override init() {
-        super.init()
-        
+    init() {
         gameCenterHelper.authenticationSucceededHandler = {
             self.status = .menu
         }

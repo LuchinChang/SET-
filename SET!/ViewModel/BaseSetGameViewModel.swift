@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-class BaseSetGame: NSObject, SetGameViewModel {
-    typealias Card = SetGame.Card
-    
+class BaseSetGame: NSObject, SetGameViewModel { typealias Card = SetGame.Card
     private var theme: Theme
     @Published private var setGame: SetGame
         
@@ -19,7 +17,6 @@ class BaseSetGame: NSObject, SetGameViewModel {
     var cardsInDeck: Array<Card> { cards.filter {$0.status == .inDeck} }
     var cardsOnTable: Array<Card> { cards.filter {$0.status == .onTable} }
     var cardsMatched: Array<Card> { cards.filter {$0.status == .matched} }
-    
     var isMultiPlayer: Bool
     var playerNumber: (Int, Int)
     

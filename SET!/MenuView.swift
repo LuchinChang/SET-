@@ -13,27 +13,25 @@ struct MenuView: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        VStack {
-            NavigationView {
-                ZStack {
-                    Color(.yellow).edgesIgnoringSafeArea(.all)
-                    VStack() {
-                        NavigationLink(destination: GKGameCenterView().ignoresSafeArea()) {
-                            Text("LeaderBoard")
-                        }
-                        .buttonStyle(PrimaryButtonStyle())
-                        NavigationLink(destination: GameModeChoosingView()) {
-                            Text("Start Game!")
-                        }
-                        .buttonStyle(PrimaryButtonStyle())
-                        NavigationLink(destination: RewardedInterstitialContentView(navigationTitle: "Gain Reward")) {
-                            Text("Gain Reward")
-                        }
-                        .buttonStyle(PrimaryButtonStyle())
-                    }
+        NavigationStack {
+            VStack {
+                Spacer()
+                PlayerProfileView.localPlayer
+                Spacer()
+                NavigationLink(destination: GKGameCenterView()) {
+                    Text("LeaderBoard")
                 }
-                .navigationTitle(Text("Menu"))
+                NavigationLink(destination: GameModeChoosingView()) {
+                    Text("Start Game!")
+                }
+                NavigationLink(destination: RewardedInterstitialContentView()) {
+                    Text("Gain Reward")
+                }
             }
+            .padding()
+            .environmentObject(gameManager)
+            .buttonStyle(ButtonViewStyle.Primary())
+            
         }
     }
 }

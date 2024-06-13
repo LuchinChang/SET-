@@ -12,7 +12,7 @@ struct MatchMakingView: View {
     var body: some View {
         GKMatchmakerView(
             matchRequest: GameCenterHelper.defaultHelper.getMatchRequest(),
-            matchmakingMode: GameCenterHelper.defaultHelper.matchMakingMode,
+//            matchmakingMode: GameCenterHelper.defaultHelper.matchMakingMode,
             canceled: { GameCenterHelper.defaultHelper.matchCancelled() },
             failed: { error in GameCenterHelper.defaultHelper.matchFailed(error: error) },
             started: { match in

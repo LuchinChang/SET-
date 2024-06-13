@@ -18,6 +18,7 @@
 		5B01F35D2C112E2700CE0D30 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F35C2C112E2700CE0D30 /* CountDownTimer.swift */; };
 		5B01F35F2C122DBD00CE0D30 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F35E2C122DBD00CE0D30 /* AuthenticationView.swift */; };
 		5B01F3612C12324900CE0D30 /* MatchMakingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3602C12324900CE0D30 /* MatchMakingView.swift */; };
+		5B0941442C18F16B001AD0B6 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0941432C18F16B001AD0B6 /* BannerView.swift */; };
 		5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A622BD5F08500CF3AC3 /* SET_App.swift */; };
 		5B133A652BD5F08500CF3AC3 /* PracticeSetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B133A642BD5F08500CF3AC3 /* PracticeSetGameView.swift */; };
 		5B133A672BD5F08600CF3AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B133A662BD5F08600CF3AC3 /* Assets.xcassets */; };
@@ -30,8 +31,7 @@
 		5B1413FD2BDF4B5F0075EB16 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */; };
 		5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1413FE2BDF83760075EB16 /* AnyShape.swift */; };
 		5B27497D2C07986A0072CB41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B27497C2C07986A0072CB41 /* ContentView.swift */; };
-		5B2749812C079A790072CB41 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2749802C079A790072CB41 /* ButtonStyle.swift */; };
-		5B2749852C079B130072CB41 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2749842C079B130072CB41 /* PlayerView.swift */; };
+		5B2749852C079B130072CB41 /* PlayerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2749842C079B130072CB41 /* PlayerProfileView.swift */; };
 		5B27E61C2C054B0B00BA6E34 /* PractiveSetGameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B27E61B2C054B0B00BA6E34 /* PractiveSetGameOverView.swift */; };
 		5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B778B572BD9F6F300FDDFA2 /* Utils.swift */; };
 		5BBC51B32C097697007B5ED0 /* SetBlitz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51B22C097697007B5ED0 /* SetBlitz.swift */; };
@@ -42,9 +42,7 @@
 		5BBC51BD2C0A88C1007B5ED0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51BC2C0A88C1007B5ED0 /* MenuView.swift */; };
 		5BBC51C52C0A9418007B5ED0 /* InGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51C42C0A9418007B5ED0 /* InGameView.swift */; };
 		5BBC51C92C0B9EB7007B5ED0 /* BlitzSetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51C82C0B9EB7007B5ED0 /* BlitzSetGameView.swift */; };
-		5BBC51CB2C0E28F5007B5ED0 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51CA2C0E28F5007B5ED0 /* AuthenticationViewModel.swift */; };
 		5BBC51CD2C0E30AD007B5ED0 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51CC2C0E30AD007B5ED0 /* GameCenterHelper.swift */; };
-		5BBC51CF2C0E31BA007B5ED0 /* MatchMakingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51CE2C0E31BA007B5ED0 /* MatchMakingViewModel.swift */; };
 		5BBC51D12C0E5DA7007B5ED0 /* GameModeChoosingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51D02C0E5DA7007B5ED0 /* GameModeChoosingView.swift */; };
 		5BBC51D32C0E6EAB007B5ED0 /* BaseSetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51D22C0E6EAB007B5ED0 /* BaseSetGameViewModel.swift */; };
 		5BBC51D52C0E743F007B5ED0 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51D42C0E743F007B5ED0 /* ViewExtensions.swift */; };
@@ -52,6 +50,7 @@
 		5BBC51DA2C0E76F6007B5ED0 /* BlitzSetGameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBC51D92C0E76F6007B5ED0 /* BlitzSetGameOverView.swift */; };
 		5BC98DE52C064DE30036F767 /* PracticeSetGameInGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC98DE42C064DE30036F767 /* PracticeSetGameInGameView.swift */; };
 		5BC98DE72C065D730036F767 /* Shadingify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC98DE62C065D730036F767 /* Shadingify.swift */; };
+		5BF4D9402C14D14F0076D823 /* ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D93F2C14D14F0076D823 /* ViewStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +64,7 @@
 		5B01F35C2C112E2700CE0D30 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		5B01F35E2C122DBD00CE0D30 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5B01F3602C12324900CE0D30 /* MatchMakingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMakingView.swift; sourceTree = "<group>"; };
+		5B0941432C18F16B001AD0B6 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		5B133A5F2BD5F08500CF3AC3 /* SET!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SET!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B133A622BD5F08500CF3AC3 /* SET_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SET_App.swift; sourceTree = "<group>"; };
 		5B133A642BD5F08500CF3AC3 /* PracticeSetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSetGameView.swift; sourceTree = "<group>"; };
@@ -78,8 +78,7 @@
 		5B1413FC2BDF4B5F0075EB16 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		5B1413FE2BDF83760075EB16 /* AnyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyShape.swift; sourceTree = "<group>"; };
 		5B27497C2C07986A0072CB41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5B2749802C079A790072CB41 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		5B2749842C079B130072CB41 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		5B2749842C079B130072CB41 /* PlayerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileView.swift; sourceTree = "<group>"; };
 		5B27E6172C05394400BA6E34 /* SET!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SET!.entitlements"; sourceTree = "<group>"; };
 		5B27E61B2C054B0B00BA6E34 /* PractiveSetGameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PractiveSetGameOverView.swift; sourceTree = "<group>"; };
 		5B778B572BD9F6F300FDDFA2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -91,9 +90,7 @@
 		5BBC51BC2C0A88C1007B5ED0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		5BBC51C42C0A9418007B5ED0 /* InGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameView.swift; sourceTree = "<group>"; };
 		5BBC51C82C0B9EB7007B5ED0 /* BlitzSetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzSetGameView.swift; sourceTree = "<group>"; };
-		5BBC51CA2C0E28F5007B5ED0 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5BBC51CC2C0E30AD007B5ED0 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
-		5BBC51CE2C0E31BA007B5ED0 /* MatchMakingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMakingViewModel.swift; sourceTree = "<group>"; };
 		5BBC51D02C0E5DA7007B5ED0 /* GameModeChoosingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeChoosingView.swift; sourceTree = "<group>"; };
 		5BBC51D22C0E6EAB007B5ED0 /* BaseSetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSetGameViewModel.swift; sourceTree = "<group>"; };
 		5BBC51D42C0E743F007B5ED0 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -101,6 +98,7 @@
 		5BBC51D92C0E76F6007B5ED0 /* BlitzSetGameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlitzSetGameOverView.swift; sourceTree = "<group>"; };
 		5BC98DE42C064DE30036F767 /* PracticeSetGameInGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSetGameInGameView.swift; sourceTree = "<group>"; };
 		5BC98DE62C065D730036F767 /* Shadingify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadingify.swift; sourceTree = "<group>"; };
+		5BF4D93F2C14D14F0076D823 /* ViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewStyle.swift; path = "SET!/View/Helper/ViewStyle.swift"; sourceTree = SOURCE_ROOT; };
 		5D7012ACB68DCEEB4894E453 /* Pods-SET!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SET!.debug.xcconfig"; path = "Target Support Files/Pods-SET!/Pods-SET!.debug.xcconfig"; sourceTree = "<group>"; };
 		87F643D39F3C1869900FD0EA /* Pods-SET!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SET!.release.xcconfig"; path = "Target Support Files/Pods-SET!/Pods-SET!.release.xcconfig"; sourceTree = "<group>"; };
 		A31C00F3705A2B37C6BDF9F4 /* Pods_SET_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SET_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +161,7 @@
 		5B133A612BD5F08500CF3AC3 /* SET! */ = {
 			isa = PBXGroup;
 			children = (
+				5B133A682BD5F08600CF3AC3 /* Preview Content */,
 				5B01F34E2C10D35200CE0D30 /* SET--Info.plist */,
 				5B27E6172C05394400BA6E34 /* SET!.entitlements */,
 				5B133A662BD5F08600CF3AC3 /* Assets.xcassets */,
@@ -172,7 +171,6 @@
 				5BC98DE82C0681040036F767 /* ViewModel */,
 				5BC98DE92C06812E0036F767 /* Model */,
 				5B27E6182C05462700BA6E34 /* Game Center */,
-				5B133A682BD5F08600CF3AC3 /* Preview Content */,
 				5BBC51B62C0A4E2D007B5ED0 /* GameManager.swift */,
 				5BBC51B82C0A5D61007B5ED0 /* Protocols.swift */,
 				5B27497C2C07986A0072CB41 /* ContentView.swift */,
@@ -194,18 +192,29 @@
 		5B27E6182C05462700BA6E34 /* Game Center */ = {
 			isa = PBXGroup;
 			children = (
-				5BBC51CA2C0E28F5007B5ED0 /* AuthenticationViewModel.swift */,
-				5BBC51CE2C0E31BA007B5ED0 /* MatchMakingViewModel.swift */,
 				5BBC51CC2C0E30AD007B5ED0 /* GameCenterHelper.swift */,
-				5B2749802C079A790072CB41 /* ButtonStyle.swift */,
-				5B2749842C079B130072CB41 /* PlayerView.swift */,
+				5B2749842C079B130072CB41 /* PlayerProfileView.swift */,
 				5B01F35E2C122DBD00CE0D30 /* AuthenticationView.swift */,
 				5B01F3602C12324900CE0D30 /* MatchMakingView.swift */,
 			);
 			path = "Game Center";
 			sourceTree = "<group>";
 		};
-		5BBC51D82C0E7640007B5ED0 /* BuildingView */ = {
+		5B5615562C18E07C00BDDCB6 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				5BBC51C82C0B9EB7007B5ED0 /* BlitzSetGameView.swift */,
+				5BBC51D62C0E75DC007B5ED0 /* BlitzSetGameInGameView.swift */,
+				5BBC51D92C0E76F6007B5ED0 /* BlitzSetGameOverView.swift */,
+				5B133A642BD5F08500CF3AC3 /* PracticeSetGameView.swift */,
+				5BC98DE42C064DE30036F767 /* PracticeSetGameInGameView.swift */,
+				5B27E61B2C054B0B00BA6E34 /* PractiveSetGameOverView.swift */,
+				5B0941432C18F16B001AD0B6 /* BannerView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		5BBC51D82C0E7640007B5ED0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				5B133A782BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift */,
@@ -213,20 +222,16 @@
 				5B133A722BD60E8400CF3AC3 /* CardView.swift */,
 				5BC98DE62C065D730036F767 /* Shadingify.swift */,
 				5BBC51D42C0E743F007B5ED0 /* ViewExtensions.swift */,
+				5BF4D93F2C14D14F0076D823 /* ViewStyle.swift */,
 			);
-			path = BuildingView;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		5BC98DE32C0648410036F767 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5BBC51D82C0E7640007B5ED0 /* BuildingView */,
-				5BBC51C82C0B9EB7007B5ED0 /* BlitzSetGameView.swift */,
-				5BBC51D62C0E75DC007B5ED0 /* BlitzSetGameInGameView.swift */,
-				5BBC51D92C0E76F6007B5ED0 /* BlitzSetGameOverView.swift */,
-				5B133A642BD5F08500CF3AC3 /* PracticeSetGameView.swift */,
-				5BC98DE42C064DE30036F767 /* PracticeSetGameInGameView.swift */,
-				5B27E61B2C054B0B00BA6E34 /* PractiveSetGameOverView.swift */,
+				5B5615562C18E07C00BDDCB6 /* Game */,
+				5BBC51D82C0E7640007B5ED0 /* Helper */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,9 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BBC51CB2C0E28F5007B5ED0 /* AuthenticationViewModel.swift in Sources */,
 				5B01F3532C10D7D900CE0D30 /* AdViewController.swift in Sources */,
-				5BBC51CF2C0E31BA007B5ED0 /* MatchMakingViewModel.swift in Sources */,
 				5B01F3552C1116CA00CE0D30 /* AdCoordinator.swift in Sources */,
 				5B27E61C2C054B0B00BA6E34 /* PractiveSetGameOverView.swift in Sources */,
 				5BBC51C92C0B9EB7007B5ED0 /* BlitzSetGameView.swift in Sources */,
@@ -396,15 +399,17 @@
 				5B133A652BD5F08500CF3AC3 /* PracticeSetGameView.swift in Sources */,
 				5BBC51D52C0E743F007B5ED0 /* ViewExtensions.swift in Sources */,
 				5BBC51B52C0A4816007B5ED0 /* Player.swift in Sources */,
+				5B0941442C18F16B001AD0B6 /* BannerView.swift in Sources */,
 				5B01F35F2C122DBD00CE0D30 /* AuthenticationView.swift in Sources */,
 				5BBC51DA2C0E76F6007B5ED0 /* BlitzSetGameOverView.swift in Sources */,
 				5B133A7F2BD785A900CF3AC3 /* Theme.swift in Sources */,
 				5B778B582BD9F6F300FDDFA2 /* Utils.swift in Sources */,
+				5BF4D9402C14D14F0076D823 /* ViewStyle.swift in Sources */,
 				5BBC51D72C0E75DC007B5ED0 /* BlitzSetGameInGameView.swift in Sources */,
 				5B01F35B2C112DD600CE0D30 /* AdDialogContentView.swift in Sources */,
 				5B27497D2C07986A0072CB41 /* ContentView.swift in Sources */,
 				5BBC51BD2C0A88C1007B5ED0 /* MenuView.swift in Sources */,
-				5B2749852C079B130072CB41 /* PlayerView.swift in Sources */,
+				5B2749852C079B130072CB41 /* PlayerProfileView.swift in Sources */,
 				5BBC51B92C0A5D61007B5ED0 /* Protocols.swift in Sources */,
 				5B01F3572C112D7300CE0D30 /* RewardedInterstitialContentView.swift in Sources */,
 				5BBC51B32C097697007B5ED0 /* SetBlitz.swift in Sources */,
@@ -414,7 +419,6 @@
 				5BBC51BB2C0A7EB3007B5ED0 /* SetBlitzViewModel.swift in Sources */,
 				5B133A792BD74D8D00CF3AC3 /* AspectVGridWithScrollOption.swift in Sources */,
 				5BBC51CD2C0E30AD007B5ED0 /* GameCenterHelper.swift in Sources */,
-				5B2749812C079A790072CB41 /* ButtonStyle.swift in Sources */,
 				5B01F35D2C112E2700CE0D30 /* CountDownTimer.swift in Sources */,
 				5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */,
 				5B01F3512C10D76C00CE0D30 /* AdView.swift in Sources */,
@@ -563,7 +567,6 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SET--Info.plist";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -599,7 +602,6 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SET--Info.plist";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -10,28 +10,24 @@ import GameKitUI
 
 struct GameModeChoosingView: View {
     @EnvironmentObject var gameManager: GameManager
-    @State var showMatchMakingView = false
     
     var body: some View {
         VStack {
-            Button() {
+            Button("Practice") {
                 gameManager.startGame(.setPractice)
-            } label: {
-                Text("Practice")
             }
-            .buttonStyle(PrimaryButtonStyle())
             
-            Button() {
+            Button("SET BLITZ") {
                 gameManager.startGame(.setBlitz)
-            } label: {
-                Text("SET BLITZ")
             }
-            .buttonStyle(PrimaryButtonStyle())
         }
-        .sheet(
-            isPresented: $gameManager.findNewMatch,
-            content: { matchMakingView }
-        )
+        .padding()
+        .environmentObject(gameManager)
+        .buttonStyle(ButtonViewStyle.Primary())
+        .sheet(isPresented: $gameManager.findNewMatch) {
+            matchMakingView
+        }
+        
     }
     
     var matchMakingView: some View {

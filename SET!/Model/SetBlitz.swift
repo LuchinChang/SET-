@@ -19,6 +19,6 @@ struct SetBlitz: MultiPlayer, TimedGame {
     }
     
     private struct Constants {
-        static let maxRemainingTime = 10 // seconds
+        static let maxRemainingTime = 60 // seconds
     }
 }

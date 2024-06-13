@@ -9,14 +9,11 @@ import Foundation
 import GameKit
 
 class GameCenterHelper {
-    private var authenticationHelper = AuthenticationViewModel()
-    private var matchMakingHelper = MatchMakingViewModel()
-    
     var showAlert = false
     
     var localPlayer: GKPlayer?
     var remotePlayer: [GKPlayer]?
-    var matchMakingMode: GKMatchmakingMode = .inviteOnly
+//    var matchMakingMode: 
     var match: GKMatch?
     var matchSucceededHandler: () -> Void = {}
     var authenticationSucceededHandler: () -> Void = {}

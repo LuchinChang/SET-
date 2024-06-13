@@ -22,7 +22,6 @@ struct ContentView: View {
                 }
             }
             .environmentObject(gameManager)
-            
             bannerAd
         }
     }
@@ -32,6 +31,6 @@ struct ContentView: View {
     }
     
     var bannerAd: some View {
-        BannerView().frame(maxHeight: 60)
+        AdBannerView().frame(maxHeight: 60)
     }
 }
