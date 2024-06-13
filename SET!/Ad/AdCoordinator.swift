@@ -18,7 +18,6 @@ class AdCoordinator: NSObject, ObservableObject {
             if let error = error {
                 return print("Failed to load ad with error: \(error.localizedDescription)")
             }
-            
             self.ad = ad
         }
     }
@@ -28,7 +27,6 @@ class AdCoordinator: NSObject, ObservableObject {
             return print("Ad wasn't ready")
         }
         
-        // View controller is an optional parameter. Pass in nil.
         fullScreenAd.present(fromRootViewController: nil)
     }
 }

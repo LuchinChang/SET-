@@ -5,10 +5,11 @@
 //  Created by LuChin Chang on 2024/6/5.
 //
 
+import UIKit
 import SwiftUI
 import GoogleMobileAds
 
-struct AdBannerView: UIViewControllerRepresentable {
+struct BannerAdView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     @EnvironmentObject var gameManager: GameManager
     
@@ -40,9 +41,9 @@ struct AdBannerView: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, BannerViewControllerWidthDelegate, GADBannerViewDelegate {
-        let parent: AdBannerView
+        let parent: BannerAdView
         
-        init(_ parent: AdBannerView) {
+        init(_ parent: BannerAdView) {
             self.parent = parent
         }
         
@@ -63,20 +64,49 @@ struct AdBannerView: UIViewControllerRepresentable {
             print("DID NOT RECEIVE AD: \(error.localizedDescription)")
         }
         
-        func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-            print("\(#function) called")
-        }
+//        func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+//            print("\(#function) called")
+//        }
+//        
+//        func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+//            print("\(#function) called")
+//        }
+//        
+//        func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+//            print("\(#function) called")
+//        }
+//        
+//        func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+//            print("\(#function) called")
+//        }
+    }
+}
+
+// Delegate methods for receiving width update messages.
+protocol BannerViewControllerWidthDelegate: AnyObject {
+    func bannerViewController(_ bannerViewController: BannerViewController, didUpdate width: CGFloat)
+}
+
+class BannerViewController: UIViewController {
+    weak var delegate: BannerViewControllerWidthDelegate?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-            print("\(#function) called")
-        }
-        
-        func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-            print("\(#function) called")
-        }
-        
-        func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-            print("\(#function) called")
+        // Tell the delegate the initial ad width.
+        delegate?.bannerViewController(
+            self, didUpdate: view.frame.inset(by: view.safeAreaInsets).size.width)
+    }
+    
+    override func viewWillTransition(
+        to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator
+    ) {
+        coordinator.animate { _ in
+            // do nothing
+        } completion: { _ in
+            // Notify the delegate of ad width changes.
+            self.delegate?.bannerViewController(
+                self, didUpdate: self.view.frame.inset(by: self.view.safeAreaInsets).size.width)
         }
     }
 }

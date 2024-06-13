@@ -10,27 +10,44 @@ import GameKit
 import GameKitUI
 
 struct ContentView: View {
-    @StateObject var gameManager: GameManager
+    @StateObject private var gameManager: GameManager = .init()
+    @State private var showAds = true
+    @State private var showTurnOffAdOption = false
     
     var body: some View {
-        VStack {
-            Group {
-                switch gameManager.status {
-                case .initial: authenticationView
-                case .menu: MenuView()
-                case .inGame: InGameView()
+        GeometryReader { geo in
+            VStack {
+                Group {
+                    switch gameManager.status {
+                    case .initial: AuthenticationView()
+                    case .menu: MenuView()
+                    case .inGame: InGameView()
+                    }
+                }
+                .environmentObject(gameManager)
+                
+                if showAds {
+                    bannerAd.frame(maxHeight: geo.size.height / 12)
                 }
             }
-            .environmentObject(gameManager)
-            bannerAd
+            .alert("Turn off Ads?", isPresented: $showTurnOffAdOption) {
+                Button("Yes") {
+                    showAds = false
+                }
+                
+                Button("No") {
+                    
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
-    var authenticationView: some View {
-        AuthenticationView().frame(width: 640, height: 480)
-    }
     
     var bannerAd: some View {
-        AdBannerView().frame(maxHeight: 60)
+        BannerAdView()
+            .onLongPressGesture {
+                showTurnOffAdOption = true
+            }
     }
 }

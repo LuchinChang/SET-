@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		25D0615697812EF9CC78FB61 /* Pods_SET_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31C00F3705A2B37C6BDF9F4 /* Pods_SET_.framework */; };
 		5B0083BD2C07920F00A0040A /* GameKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0083BC2C07920F00A0040A /* GameKitUI */; };
-		5B01F3512C10D76C00CE0D30 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3502C10D76C00CE0D30 /* AdView.swift */; };
-		5B01F3532C10D7D900CE0D30 /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3522C10D7D900CE0D30 /* AdViewController.swift */; };
+		5B01F3512C10D76C00CE0D30 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3502C10D76C00CE0D30 /* BannerAdView.swift */; };
 		5B01F3552C1116CA00CE0D30 /* AdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3542C1116CA00CE0D30 /* AdCoordinator.swift */; };
 		5B01F3572C112D7300CE0D30 /* RewardedInterstitialContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3562C112D7300CE0D30 /* RewardedInterstitialContentView.swift */; };
 		5B01F3592C112D9700CE0D30 /* RewardedInterstitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01F3582C112D9700CE0D30 /* RewardedInterstitialViewModel.swift */; };
@@ -55,8 +54,7 @@
 
 /* Begin PBXFileReference section */
 		5B01F34E2C10D35200CE0D30 /* SET--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SET--Info.plist"; sourceTree = SOURCE_ROOT; };
-		5B01F3502C10D76C00CE0D30 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
-		5B01F3522C10D7D900CE0D30 /* AdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
+		5B01F3502C10D76C00CE0D30 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		5B01F3542C1116CA00CE0D30 /* AdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCoordinator.swift; sourceTree = "<group>"; };
 		5B01F3562C112D7300CE0D30 /* RewardedInterstitialContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedInterstitialContentView.swift; sourceTree = "<group>"; };
 		5B01F3582C112D9700CE0D30 /* RewardedInterstitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedInterstitialViewModel.swift; sourceTree = "<group>"; };
@@ -129,13 +127,9 @@
 		5B01F34F2C10D74F00CE0D30 /* Ad */ = {
 			isa = PBXGroup;
 			children = (
-				5B01F3502C10D76C00CE0D30 /* AdView.swift */,
+				5B01F3502C10D76C00CE0D30 /* BannerAdView.swift */,
 				5B01F3542C1116CA00CE0D30 /* AdCoordinator.swift */,
-				5B01F3522C10D7D900CE0D30 /* AdViewController.swift */,
-				5B01F3562C112D7300CE0D30 /* RewardedInterstitialContentView.swift */,
-				5B01F35A2C112DD600CE0D30 /* AdDialogContentView.swift */,
-				5B01F3582C112D9700CE0D30 /* RewardedInterstitialViewModel.swift */,
-				5B01F35C2C112E2700CE0D30 /* CountDownTimer.swift */,
+				5BEFBB152C1B657800375012 /* RewardInterstitial */,
 			);
 			path = Ad;
 			sourceTree = "<group>";
@@ -257,6 +251,17 @@
 				5BBC51B42C0A4816007B5ED0 /* Player.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5BEFBB152C1B657800375012 /* RewardInterstitial */ = {
+			isa = PBXGroup;
+			children = (
+				5B01F3562C112D7300CE0D30 /* RewardedInterstitialContentView.swift */,
+				5B01F35A2C112DD600CE0D30 /* AdDialogContentView.swift */,
+				5B01F3582C112D9700CE0D30 /* RewardedInterstitialViewModel.swift */,
+				5B01F35C2C112E2700CE0D30 /* CountDownTimer.swift */,
+			);
+			path = RewardInterstitial;
 			sourceTree = "<group>";
 		};
 		D5459DFE99B9A4C1F401B01F /* Frameworks */ = {
@@ -387,7 +392,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B01F3532C10D7D900CE0D30 /* AdViewController.swift in Sources */,
 				5B01F3552C1116CA00CE0D30 /* AdCoordinator.swift in Sources */,
 				5B27E61C2C054B0B00BA6E34 /* PractiveSetGameOverView.swift in Sources */,
 				5BBC51C92C0B9EB7007B5ED0 /* BlitzSetGameView.swift in Sources */,
@@ -421,7 +425,7 @@
 				5BBC51CD2C0E30AD007B5ED0 /* GameCenterHelper.swift in Sources */,
 				5B01F35D2C112E2700CE0D30 /* CountDownTimer.swift in Sources */,
 				5B133A632BD5F08500CF3AC3 /* SET_App.swift in Sources */,
-				5B01F3512C10D76C00CE0D30 /* AdView.swift in Sources */,
+				5B01F3512C10D76C00CE0D30 /* BannerAdView.swift in Sources */,
 				5BBC51D12C0E5DA7007B5ED0 /* GameModeChoosingView.swift in Sources */,
 				5B133A7B2BD7611B00CF3AC3 /* SetGame.swift in Sources */,
 				5B1413FF2BDF83760075EB16 /* AnyShape.swift in Sources */,

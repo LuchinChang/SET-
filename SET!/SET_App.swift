@@ -29,7 +29,7 @@ struct SET_App: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(gameManager: GameManager())
+            ContentView()
         }
     }
 }

@@ -28,9 +28,6 @@ struct PractiveSetGameOverView: View {
             backToMenu
         }
         .background(.yellow)
-//        .onAppear {
-//            adCoordinator.presentAd()
-//        }
     }
     
     var backToMenu: some View {

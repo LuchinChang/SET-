@@ -72,8 +72,3 @@ struct RewardedInterstitialContentView: View {
     }
 }
 
-//struct RewardedIntersititalContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RewardedInterstitialContentView(navigationTitle: "Rewarded Interstitial")
-//    }
-//}
