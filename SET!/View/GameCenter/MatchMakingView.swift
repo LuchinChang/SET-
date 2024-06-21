@@ -11,12 +11,12 @@ import GameKitUI
 struct MatchMakingView: View {
     var body: some View {
         GKMatchmakerView(
-            matchRequest: GameCenterHelper.defaultHelper.getMatchRequest(),
+            matchRequest: GameCenterHelper.default.getMatchRequest(),
 //            matchmakingMode: GameCenterHelper.defaultHelper.matchMakingMode,
-            canceled: { GameCenterHelper.defaultHelper.matchCancelled() },
-            failed: { error in GameCenterHelper.defaultHelper.matchFailed(error: error) },
+            canceled: { GameCenterHelper.default.matchCancelled() },
+            failed: { error in GameCenterHelper.default.matchFailed(error: error) },
             started: { match in
-                GameCenterHelper.defaultHelper.matchSucceeded(newMatch: match)
+                GameCenterHelper.default.matchSucceeded(newMatch: match)
             }
         )
     }

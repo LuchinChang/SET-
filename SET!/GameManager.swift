@@ -15,19 +15,20 @@ class GameManager: ObservableObject {
 
     @Published private(set) var gameMode: GameMode?
     
-    
     @Published var findNewMatch = false
     
-    let gameCenterHelper = GameCenterHelper.defaultHelper
+    let gameCenterHelper = GameCenterHelper.default
     
     var localPlayer: GKLocalPlayer? {
-        gameCenterHelper.localPlayer as? GKLocalPlayer
+        gameCenterHelper.localPlayer
     }
     var match: GKMatch? {
         gameCenterHelper.match
     }
- 
-
+    
+    var developerMode = false
+    @Published var showDeveloperModeMsg = false
+    
     // MARK: Intentions
     func startGame(_ gameMode: GameMode) {
         self.gameMode = gameMode
@@ -39,12 +40,12 @@ class GameManager: ObservableObject {
         }
     }
     
-    func getPracticeSetGameVM() -> ShapeSetGame {
-        ShapeSetGame()
+    func getPracticeSetGameVM() -> SetPracticeVM {
+        SetPracticeVM()
     }
     
-    func getBlitzzSetGameVM() -> SetBlitzViewModel {
-        let blitzSetGame = SetBlitzViewModel(match!, localPlayer: localPlayer!)
+    func getBlitzzSetGameVM() -> SetBlitzVM {
+        let blitzSetGame = SetBlitzVM(match!, localPlayer: localPlayer!, developerMode: developerMode)
         match?.delegate = blitzSetGame
         return blitzSetGame
     }
@@ -62,7 +63,7 @@ class GameManager: ObservableObject {
             self.status = .menu
         }
         
-        GameCenterHelper.defaultHelper.matchSucceededHandler = { [self] in
+        GameCenterHelper.default.matchSucceededHandler = { [self] in
             initializeGame()
         }
     }
@@ -78,6 +79,13 @@ class GameManager: ObservableObject {
         case initial
         case menu
         case inGame
+    }
+}
+
+extension GameManager {
+    func toggleDeveloperMode() {
+        developerMode.toggle()
+        showDeveloperModeMsg = true
     }
 }
 

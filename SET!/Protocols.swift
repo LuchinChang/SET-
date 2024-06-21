@@ -8,12 +8,6 @@
 import Foundation
 import GameKit
 
-protocol MultiPlayer {
-//    var minPlayer: Int { get set }
-//    var maxPlayer: Int { get set }
-//    var isHost: Bool { get set }
-}
-
 struct MatchCommunicationHelper {
     let match: GKMatch
     
@@ -76,6 +70,7 @@ protocol TimedGame {
 protocol SetGameViewModel: ObservableObject {
     var isMultiPlayer: Bool { get }
     var playerNumber: (Int, Int) { get }
+
 }
 
 final class TimerHandler {

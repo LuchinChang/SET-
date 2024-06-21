@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class BaseSetGame: NSObject, SetGameViewModel { typealias Card = SetGame.Card
-    private var theme: Theme
-    @Published private var setGame: SetGame
+class BaseSetGameVM: NSObject, SetGameViewModel { typealias Card = SetGame.Card
+    private let theme: Theme
+    @Published private(set) var setGame: SetGame
         
     var cardsAllDealt: Bool { setGame.cardsAllDealt }
     var isOver: Bool { setGame.isFinished }
@@ -17,6 +17,8 @@ class BaseSetGame: NSObject, SetGameViewModel { typealias Card = SetGame.Card
     var cardsInDeck: Array<Card> { cards.filter {$0.status == .inDeck} }
     var cardsOnTable: Array<Card> { cards.filter {$0.status == .onTable} }
     var cardsMatched: Array<Card> { cards.filter {$0.status == .matched} }
+    var cardsSelected: Array<Card> { cards.filter {$0.isSelected} }
+    
     var isMultiPlayer: Bool
     var playerNumber: (Int, Int)
     
@@ -76,7 +78,12 @@ class BaseSetGame: NSObject, SetGameViewModel { typealias Card = SetGame.Card
         setGame = SetGame()
     }
     
-    func getSymbolFeatures(_ card: Card) -> (Int, SymbolShading, Color, AnyShape) {
+    // MARK: Ability
+    func _shuffle() {
+        setGame.cards.shuffle()
+    }
+    
+    static func getSymbolFeatures(_ card: Card, _ theme: Theme = Theme.shapeTheme) -> (Int, SymbolShading, Color, AnyShape) {
         return (
             number: theme.number[card.featureIndices[0]],
             shading: theme.shading[card.featureIndices[1]],

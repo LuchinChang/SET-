@@ -9,21 +9,14 @@ import SwiftUI
 
 struct PractiveSetGameOverView: View {
     @EnvironmentObject var gameManager: GameManager
-    @EnvironmentObject var adCoordinator: AdCoordinator
     
     var body: some View {
         VStack {
             Spacer()
             Text("Congratulations!!")
-                .font(.largeTitle)
-                .bold()
-                .italic()
-                .foregroundStyle(.blue)
-                .frame(maxWidth: .infinity)
+                .modifier(TextViewStyle.gameOverTextStyle)
+            
             Spacer()
-            Text("(touch to start a new game)")
-                .bold()
-                .foregroundStyle(.gray)
             
             backToMenu
         }
@@ -31,9 +24,7 @@ struct PractiveSetGameOverView: View {
     }
     
     var backToMenu: some View {
-        Button {
-            gameManager.finishGame()
-        } label: {
+        Button(action: gameManager.finishGame) {
             Text("Back To Menu")
         }
     }

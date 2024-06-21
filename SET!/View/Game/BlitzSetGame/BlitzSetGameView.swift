@@ -9,11 +9,11 @@ import SwiftUI
 
 struct BlitzSetGameView: View {
     @EnvironmentObject var gameManager: GameManager
-    @StateObject private var blitzSetGame: SetBlitzViewModel
+    @StateObject private var blitzSetGame: SetBlitzVM
     
     var body: some View {
         Group {
-            if blitzSetGame.isOver {
+            if blitzSetGame.isFinished {
                 BlitzSetGameOverView()
             } else {
                 BlitzSetGameInGameView()

@@ -9,20 +9,20 @@ import SwiftUI
 
 struct PracticeSetGameView: View {
     @EnvironmentObject var gameManager: GameManager
-    @StateObject private var shapeSetGame: ShapeSetGame
+    @StateObject private var practiceSetGame: SetPracticeVM
     
     var body: some View {
         Group {
-            if shapeSetGame.isOver {
+            if practiceSetGame.isOver {
                 PractiveSetGameOverView()
             } else {
                 PracticeSetGameInGameView()
             }
         }
-        .environmentObject(shapeSetGame)
+        .environmentObject(practiceSetGame)
     }
     
     init(gameManager: GameManager) {
-        _shapeSetGame = StateObject(wrappedValue: gameManager.getPracticeSetGameVM())
+        _practiceSetGame = StateObject(wrappedValue: gameManager.getPracticeSetGameVM())
     }
 }

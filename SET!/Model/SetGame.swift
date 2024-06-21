@@ -8,7 +8,7 @@
 import Foundation
 
 struct SetGame {
-    private(set) var cards: Array<Card>
+    var cards: Array<Card>
     private var lastDealtCardIndex = 0
     var isFinished: Bool {
         // Check if there are sets available on table
@@ -102,9 +102,10 @@ struct SetGame {
         }
     }
     
-    private var allChosenCardsIndices: [Int] {
+    var allChosenCardsIndices: [Int] {
         cards.indices.filter {cards[$0].isSelected}
     }
+ 
     
     // Return true or false based on the rules
     // Return nil if the number of cards passed in != Constants.numOfCardsOfAMatchedSet
@@ -116,30 +117,34 @@ struct SetGame {
         var matched = true
         for indexOfFeatures in 0..<Constants.numOfFeatures {
             if !matched { break }
-                
-            let featureisMatched = featuresAreMatched(featureIndices: [
+            
+            let featureIndices = [
                 cards[cardsIndices[0]].featureIndices[indexOfFeatures],
                 cards[cardsIndices[1]].featureIndices[indexOfFeatures],
                 cards[cardsIndices[2]].featureIndices[indexOfFeatures]
-            ])
+            ]
             
-            matched = matched && featureisMatched
+            let isMatched = SetGame.featureIsMatched(featureIndices)
+            
+            matched = matched && isMatched
         }
         return matched
-        
-        func featuresAreMatched(featureIndices: [Int]) -> Bool {
-            let numOfdifferentFeatures = Set(featureIndices).count
-            return (numOfdifferentFeatures == 1 || numOfdifferentFeatures == 3)
-        }
     }
+    
+    static func featureIsMatched(_ featureIndices: [Int]) -> Bool {
+        let numOfdifferentFeatures = Set(featureIndices).count
+        return (numOfdifferentFeatures == 1 || numOfdifferentFeatures == 3)
+    }
+    
+ 
     
     mutating func chooseCard(_ card: Card) {
         if let chosenCardsIndex = cards.firstIndex(where: { $0.id == card.id }) {
             let chosenSetOfCards = allChosenCardsIndices
             let matched = cardsAreMatched(chosenSetOfCards)
             
-            if matched != nil {
-                if matched! {
+            if let matched {
+                if matched {
                     // Deal new cards which replace their spaces
                     dealInPlace(chosenSetOfCards)
                 }

@@ -11,9 +11,9 @@ import GameKitUI
 struct AuthenticationView: View {
     var body: some View {
         GKAuthenticationView { error in
-            GameCenterHelper.defaultHelper.authenticationfailed(error: error)
+            GameCenterHelper.default.authenticationfailed(error: error)
         } authenticated: { player in
-            GameCenterHelper.defaultHelper.authenticationSucceeded(player: player)
+            GameCenterHelper.default.authenticationSucceeded(player: player)
         }
     }
 }

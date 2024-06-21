@@ -19,6 +19,21 @@ struct Theme {
         color: [.blue, .purple, .orange],
         shape: [AnyShape(Diamond()), AnyShape(RoundedRectangle(cornerRadius: 12)), AnyShape(Ellipse())]
     )
+    
+    static func getFeatureName(_ featureIndex: Int) -> String {
+        switch featureIndex {
+        case 0:
+            return "Quantity"
+        case 1:
+            return "Shading"
+        case 2:
+            return "Color"
+        case 3:
+            return "Shape"
+        default:
+            return ""
+        }
+    }
 }
 
 enum SymbolShading: Int {

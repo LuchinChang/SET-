@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct SetBlitz: MultiPlayer, TimedGame {
+
+struct SetBlitz: TimedGame {
     var isFinished: Bool {
         remainingTime == 0
     }
@@ -21,4 +22,5 @@ struct SetBlitz: MultiPlayer, TimedGame {
     private struct Constants {
         static let maxRemainingTime = 60 // seconds
     }
+
 }

@@ -6,32 +6,29 @@
 //
 
 import SwiftUI
+import GameKit
 
 struct BlitzSetGameOverView: View {
-    typealias Msg = SetBlitzViewModel.Msg
+    typealias Msg = SetBlitzVM.Msg
     
     @EnvironmentObject var gameManager: GameManager
-    @EnvironmentObject var blitzSetGame: SetBlitzViewModel
-    @EnvironmentObject var adCoordinator: AdCoordinator
+    @EnvironmentObject var blitzSetGame: SetBlitzVM
     
     var body: some View {
         VStack {
             Spacer()
-            switch blitzSetGame.isWinner {
-            case true:
-                winView
-            case false:
-                loseView
-            }
-                
+            resultText
             Spacer()
-            playAgain
-            backToMenu
+//            playAgain
+//            backToMenu
+            Text("touch to back to Menu")
+                .font(.body)
+                .foregroundStyle(.gray)
         }
-//        .onAppear {
-//            adCoordinator.presentAd()
-//        }
-        .background(.yellow)
+        .background(ViewStyle.backgroundColor)
+        .onTapGesture {
+            gameManager.finishGame()
+        }
         .alert(Msg.PlayAgain.Alert.message, isPresented: $blitzSetGame.showPlayAgainInvitation) {
             Button("Yes") {
                 blitzSetGame.processPlayAgainInvitation(wantsToPlayAgain: true)
@@ -49,6 +46,7 @@ struct BlitzSetGameOverView: View {
         } label: {
             Text("Restart")
         }
+        .buttonStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Button Style@*/DefaultButtonStyle()/*@END_MENU_TOKEN@*/)
     }
     
     var backToMenu: some View {
@@ -59,17 +57,8 @@ struct BlitzSetGameOverView: View {
         }
     }
     
-    var winView: some View {
-        Text("Victory!!")
-            .font(.largeTitle)
-            .bold()
-            .italic()
-            .foregroundStyle(.blue)
-            .frame(maxWidth: .infinity)
-    }
-    
-    var loseView: some View {
-        Text("Defeat..")
+    var resultText: some View {
+        Text(blitzSetGame.isWinner ? "Victory!!" : "Defeat..")
             .font(.largeTitle)
             .bold()
             .italic()
@@ -78,6 +67,8 @@ struct BlitzSetGameOverView: View {
     }
 }
 
-#Preview {
-    BlitzSetGameOverView()
-}
+//#Preview {
+//    BlitzSetGameOverView()
+//        .environmentObject(GameManager())
+//        .environmentObject(SetBlitzVM(GKMatch.init(), localPlayer: GKLocalPlayer.local))
+//}

@@ -7,21 +7,26 @@
 
 import SwiftUI
 
-extension BaseSetGame {
+extension BaseSetGameVM {
     func dealWithAnimation(_ numOfCards: Int) {
-        
         var delay: TimeInterval = 0
+        
         for _ in 0..<numOfCards {
-            withAnimation(.linear(duration: 1).delay(delay)) {
+            withAnimation(.bouncy(duration: 0.5).delay(delay)) {
                 deal(1)
             }
-            delay += 0.2
+            delay += 0.1
         }
     }
     
     func newGame() {
         _newGame()
         dealWithAnimation(12)
+    }
+    
+    static func buildCardView(_ card: SetGame.Card) -> some View {
+        let (number, shading, color, shape) = BaseSetGameVM.getSymbolFeatures(card)
+        return CardView(card, number, shading, color, shape)
     }
 }
 

@@ -7,10 +7,10 @@
 
 import SwiftUI
 import GameKit
-import GameKitUI
 
 struct ContentView: View {
     @StateObject private var gameManager: GameManager = .init()
+    
     @State private var showAds = true
     @State private var showTurnOffAdOption = false
     
@@ -36,7 +36,6 @@ struct ContentView: View {
                 }
                 
                 Button("No") {
-                    
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

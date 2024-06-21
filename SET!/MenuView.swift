@@ -16,23 +16,31 @@ struct MenuView: View {
         NavigationStack {
             VStack {
                 Spacer()
-                PlayerProfileView.localPlayer
+                playerProfile
                 Spacer()
-                NavigationLink(destination: GKGameCenterView()) {
-                    Text("LeaderBoard")
+                NavigationLink(destination: GKDashboardViewController()) {
+                    Text("DashBoard")
                 }
+                
                 NavigationLink(destination: GameModeChoosingView()) {
-                    Text("Start Game!")
+                    Text("Start!")
                 }
-//                NavigationLink(destination: RewardedInterstitialContentView()) {
-//                    Text("Gain Reward")
-//                }
             }
             .padding()
             .environmentObject(gameManager)
-            .buttonStyle(ButtonViewStyle.Primary())
-            
+            .buttonStyle(ButtonViewStyle.primary)
+            .alert("Developer Mode is \(gameManager.developerMode ? "on" : "off")", 
+                   isPresented: $gameManager.showDeveloperModeMsg) {
+                Button("Ok", action: {})
+            }
         }
+    }
+    
+    var playerProfile: some View {
+        PlayerProfileView(gameManager.localPlayer!, hideName: false)
+            .onLongPressGesture() {
+                gameManager.toggleDeveloperMode()
+            }
     }
 }
 
