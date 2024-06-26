@@ -27,12 +27,12 @@ class BaseGameCenterHelper {
     }
     
     func authenticationfailed(error: Error) {
-        print("Authentication Failed: \(error)")
+        DebugHelper.printInfo("Authentication Failed: \(error)")
     }
     
     // MARK: MatchMaking
     func matchCancelled() {
-        print("Player Cancelled")
+        DebugHelper.printInfo("Player Cancelled")
     }
     
     func getMatchRequest(minPlayers: Int = 2, MaxPlayers: Int = 4, InviteMsg: String = "Let's Play") -> GKMatchRequest {
@@ -46,7 +46,7 @@ class BaseGameCenterHelper {
     }
     
     func matchFailed(error: Error) {
-        print("Match Making Failed: \(error)")
+        DebugHelper.printInfo("Match Making Failed: \(error)")
     }
     
     func matchSucceeded(newMatch: GKMatch) {
@@ -62,7 +62,7 @@ class GameCenterHelper: BaseGameCenterHelper {
     
     // MARK: Intent
     func recordGameResult(won: Bool, score: Int) {
-        print(won, score)
+        DebugHelper.printInfo(won, score)
         
         let oldHighestScore = playerRecord.highestScore
         
@@ -90,11 +90,11 @@ class GameCenterHelper: BaseGameCenterHelper {
         Task {
             do {
                 try await playerRecord.loadRecord()
-                print(playerRecord)
+                DebugHelper.printInfo(playerRecord)
                 
                 
             } catch {
-                print(error.localizedDescription)
+                DebugHelper.printInfo(error.localizedDescription)
             }
         }
         super.authenticationSucceeded(player: player)
@@ -104,7 +104,7 @@ class GameCenterHelper: BaseGameCenterHelper {
     private func loadLeaderboards() {
         GKLeaderboard.loadLeaderboards(IDs: SetBlitzGameCenter.LeaderBoard.ids) { leaderboards, err in
             guard err == nil else {
-                print(err.debugDescription)
+                DebugHelper.printInfo(err.debugDescription)
                 return
             }
             
@@ -124,14 +124,14 @@ class GameCenterHelper: BaseGameCenterHelper {
         guard let leaderboard = leaderboards[name] else { return }
         
         leaderboard.submitScore(score, context: score, player: localPlayer!) { err in
-            print(err.debugDescription)
+            DebugHelper.printInfo(err.debugDescription)
         }
     }
     
     private func reportAchievement(to name: SetBlitzGameCenter.Achievement) {
         let achievement = loadAchievements(name)
         
-        print("Reporting Achievement", name)
+        DebugHelper.printInfo("Reporting Achievement", name)
         
         switch name {
         default:
@@ -142,7 +142,7 @@ class GameCenterHelper: BaseGameCenterHelper {
             do {
                 try await GKAchievement.report([achievement])
             } catch {
-                print(error.localizedDescription)
+                DebugHelper.printInfo(error.localizedDescription)
             }
         }
     }
@@ -172,10 +172,10 @@ class PlayerRecordVM {
         
         if let recordData = records.filter({ $0.name == PlayerRecordVM.recordFile }).first {
             record = try await recordDecoder.decode(PlayerRecord.self, from: recordData.loadData())
-            print("Loading Player Record Success", record.numberOfWins, record.higestScore)
+            DebugHelper.printInfo("Loading Player Record Success", record.numberOfWins, record.higestScore)
             
         } else {
-            print("Using Default")
+            DebugHelper.printInfo("Using Default")
             record = .default
         }
     }
@@ -186,7 +186,7 @@ class PlayerRecordVM {
             try await localPlayer!.saveGameData(recordData, withName: PlayerRecordVM.recordFile)
             
         } catch {
-            print(error.localizedDescription)
+            DebugHelper.printInfo(error.localizedDescription)
         }
         
     }

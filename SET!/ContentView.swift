@@ -11,9 +11,6 @@ import GameKit
 struct ContentView: View {
     @StateObject private var gameManager: GameManager = .init()
     
-    @State private var showAds = true
-    @State private var showTurnOffAdOption = false
-    
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -26,16 +23,8 @@ struct ContentView: View {
                 }
                 .environmentObject(gameManager)
                 
-                if showAds {
+                if !gameManager.developerMode {
                     bannerAd.frame(maxHeight: geo.size.height / 12)
-                }
-            }
-            .alert("Turn off Ads?", isPresented: $showTurnOffAdOption) {
-                Button("Yes") {
-                    showAds = false
-                }
-                
-                Button("No") {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -45,8 +34,6 @@ struct ContentView: View {
     
     var bannerAd: some View {
         BannerAdView()
-            .onLongPressGesture {
-                showTurnOffAdOption = true
-            }
+            .disabled(gameManager.status == .inGame)
     }
 }

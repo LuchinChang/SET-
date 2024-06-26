@@ -20,12 +20,11 @@ extension SetBlitzVM: GKMatchDelegate {
         case .str:
             receivedStrDataHandler(content)
         case .default:
-            print("Not String Data \(content)")
+            DebugHelper.printInfo("Not String Data \(content)")
         }
     }
     
     func receivedStrDataHandler (_ msg: String) {
-//        print(msg)
         let (msgPrefix, senderId, content) = Msg.decodeMsg(msg)
         
         switch msgPrefix {
@@ -34,7 +33,7 @@ extension SetBlitzVM: GKMatchDelegate {
             
             if remotePlayers.count == match.players.count {
                 if localPlayer.gamePlayerID < remotePlayers.keys.min()! {
-                    print("I am host \(localPlayer.displayName)")
+                    DebugHelper.printInfo("I am host \(localPlayer.displayName)")
                     initializeHost()
                 }
             }
@@ -52,7 +51,7 @@ extension SetBlitzVM: GKMatchDelegate {
             finalizeGame()
             
         case .playAgain:
-            print(content)
+            DebugHelper.printInfo(content)
             if content == "invite" {
                 showPlayAgainInvitation = true
                 
@@ -61,7 +60,7 @@ extension SetBlitzVM: GKMatchDelegate {
                 reset()
                    
             } else {
-                print("Invitee declined the invitaion")
+                DebugHelper.printInfo("Invitee declined the invitaion")
             }
         
         case .ability:
@@ -69,11 +68,11 @@ extension SetBlitzVM: GKMatchDelegate {
             case .shuffle:
                getShuffled()
             default:
-                print(content)
+                DebugHelper.printInfo(content)
             }
             
         default:
-            print(content)
+            DebugHelper.printInfo(content)
         }
     }
     
@@ -126,7 +125,6 @@ extension SetBlitzVM: GKMatchDelegate {
         
         static func decodeMsg(_ msg: String) -> (msgKind: MsgPrefix, senderId: String, content: String) {
             let msgSplit = msg.split(separator: delimiter)
-            print(msgSplit)
             
             let msgPrefix = msgSplit.first
             let senderId = String(msgSplit[1])

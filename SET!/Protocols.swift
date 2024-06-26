@@ -15,7 +15,7 @@ struct MatchCommunicationHelper {
         if let encodedString = encodeMsg(msg, msgType: .str) {
             sendData(encodedString, mode: .reliable)
         } else {
-            print("Sending msg: \(msg) failed")
+            DebugHelper.printInfo("Sending msg: \(msg) failed")
         }
     }
    
@@ -23,7 +23,7 @@ struct MatchCommunicationHelper {
         do {
             try match.sendData(toAllPlayers: data, with: mode)
         } catch {
-            print(error)
+            DebugHelper.printInfo(error)
         }
     }
     

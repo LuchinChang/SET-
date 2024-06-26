@@ -11,7 +11,7 @@ import GameKit
 struct GKDashboardViewController: UIViewControllerRepresentable {
     typealias UIViewControllerType = GKGameCenterViewController
 
-    var viewState: GKGameCenterViewControllerState = .leaderboards
+    var viewState: GKGameCenterViewControllerState = .dashboard
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
